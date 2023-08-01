@@ -19,7 +19,8 @@
     "dev": "rollup -c --watch --bundleConfigAsCjs --environment BUILD:development",
     "test": "web-test-runner",
     "build": "rollup -c --bundleConfigAsCjs --environment BUILD:production",
-    "changeset": "changeset"
+    "changeset": "changeset",
+    "version": "sh scripts/version.sh"
   },
   "devDependencies": {
     "@changesets/cli": "^2.26.2",
