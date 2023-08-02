@@ -2,9 +2,9 @@
 export const snapshots = {};
 
 snapshots["Test Button should render"] = 
-`<my-button>
+`<ot-button disabled="">
   按钮
-</my-button>
+</ot-button>
 `;
 /* end snapshot Test Button should render */
 

@@ -1,12 +1,22 @@
 <script src="../packages/others/dist/others.umd.js"></script>
 
-  <ot-button>123</ot-button>
+
+ <ot-form>
+  <ot-button type="dashed" html-type="submit" block  size="default">点击切换</ot-button>
+ </ot-form>
 
   <script>
     const button = document.querySelector('ot-button')
-    setTimeout(() => {
-      button.type = 'primary'
-    }, 3000)
+    const form = document.querySelector('ot-form')
+    form.addEventListener('submit', (e) => {
+      console.log(e);
+      console.log('submit');
+      e.preventDefault()
+    }) 
+    button.addEventListener('click',(e) => {
+      console.log('e', e);
+      button.block = !button.block
+    })
   </script>
 </body>
 </html>
