@@ -12,6 +12,13 @@
     const { Button } = Others
   </script>
 
-  <my-button>123</my-button>
+  <ot-button>123</ot-button>
+
+  <script>
+    const button = document.querySelector('ot-button')
+    setTimeout(() => {
+      button.type = 'primary'
+    }, 3000)
+  </script>
 </body>
 </html>

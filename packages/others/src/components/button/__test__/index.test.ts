@@ -1,5 +1,5 @@
 import { expect, fixture, html, oneEvent } from '@open-wc/testing'
-import Button from '../button'
+import Button from '..'
 
 describe('Test Button', () => {
   it('should render', async () => {

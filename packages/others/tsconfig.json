@@ -1,0 +1,9 @@
+{
+  "extends": "../../tsconfig.json",
+  "compilerOptions": {
+    "declaration": true,
+    "declarationDir": "./types",
+  },
+  "include": ["src", "../../env.d.ts"],
+  "exclude": ["node_modules"]
+}

@@ -1,9 +1,16 @@
 :host {
   padding: 4px 15px;
   border-radius: 6px;
-  background-color: blue;
-  color: white;
   cursor: pointer;
   user-select: none;
 }
-  
+
+:host([type="default"]) {
+  background-color: white;
+  border: 1px solid grey;
+}
+
+:host([type="primary"]) {
+  background-color: blue;
+  color: white;
+}
