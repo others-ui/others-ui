@@ -1,4 +1,22 @@
 #!/usr/bin/env sh
-. "$(dirname -- "$0")/_/husky.sh"
+commit_msg=`cat $1`
 
-npx --no -- commitlint --edit "$1"
+msg_re="^(feat|fix|docs|style|refactor|perf|test|workflow|build|ci|chore|release|workflow)(\(.+\))?:.{1,100}"
+
+if [[ ! $commit_msg =~ $msg_re ]]
+then
+	echo "不合法的 commit 消息提交格式，请使用正确的格式:"
+	echo ""
+	echo "feat        新功能（feature）"
+	echo "fix         修补bug"
+	echo "docs        文档（新增or修改）"
+	echo "style       格式（不影响代码运行的变动）"
+	echo "refactor    重构（即不是新增功能，也不是修改bug的代码变动）"
+	echo "perf        性能优化"
+	echo "test        增加测试"
+	echo "chore       构建过程或辅助工具的变动"
+	echo ""
+	echo "详情请查看 git commit 提交规范：https://docs.google.com/document/d/1QrDFcIiPjSLDn3EL15IJygNPiHORgU1_OOAqWjiDU5Y/edit#"
+	# 异常退出
+	exit 1
+fi
