@@ -1,16 +1,96 @@
+@import "../../common/styles/theme.sass";
+
 :host {
+  display: inline;
+}
+
+// block属性
+:host([block]) {
+  display: block;
+}
+
+// type属性
+@mixin type-styles($color, $background-color, $border) {
+  color: $color;
+  background-color: $background-color;
+  border: $border;
+}
+
+button {
   padding: 4px 15px;
   border-radius: 6px;
   cursor: pointer;
   user-select: none;
-}
+  transition: all 300ms;
+  text-align: center;
+  border: none;
 
-:host([type="default"]) {
-  background-color: white;
-  border: 1px solid grey;
-}
+  &[block] {
+    display: block;
+    width: 100%;
+  }
 
-:host([type="primary"]) {
-  background-color: blue;
-  color: white;
+  &[type="default"] {
+    @include type-styles(
+      null,
+      white,
+      1px solid grey
+    );
+
+    &:hover {
+      color: $primary-color;
+      border-color: $primary-color;
+    }
+  }
+
+  &[type="primary"] {
+    @include type-styles(
+      white,
+      $primary-color,
+      null
+    );
+
+    &:hover {
+      background-color: lighten($primary-color, 10%);
+    }
+
+    &:active {
+      background-color: darken($primary-color, 10%);
+    }
+  }
+
+  &[type="dashed"] {
+    @include type-styles(
+      null,
+      white,
+      1px dashed grey
+    );
+
+    &:hover {
+      color: $primary-color;
+      border-color: $primary-color;
+    }
+
+    &:active {
+      color: darken($primary-color, 10%);
+      border-color: darken($primary-color, 10%);
+    }
+  }
+
+  &[size="default"] {
+    font-size: $default-font-size;
+  }
+
+  &[disabled], &[disabled]:hover {
+    cursor: not-allowed;
+    @include type-styles(
+      rgba(0,0,0,.25),
+      rgba(0,0,0,.04),
+      1px solid #d9d9d9
+    );
+  }
+
+  &[disabled][type="dashed"] {
+    border-style: dashed;
+  }
 }

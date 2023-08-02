@@ -1,7 +1,10 @@
 import { esbuildPlugin } from '@web/dev-server-esbuild'
 
+/** @type {import('@web/test-runner').TestRunnerConfig} */
 export default {
-  files: './**/__test__/*.test.ts',
   nodeResolve: true,
-  plugins: [esbuildPlugin({ ts: true })],
+  files: './packages/*/src/**/__test__/*.test.ts',
+  plugins: [
+    esbuildPlugin({ ts: true, tsconfig: './tsconfig.json'})
+  ]
 }
