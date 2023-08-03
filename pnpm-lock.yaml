@@ -102,25 +102,25 @@ importers:
         specifier: ^5.0.2
         version: 5.0.2
 
-  packages/others:
+  packages/others-ui:
     devDependencies:
       lit:
         specifier: ^2.7.6
         version: 2.7.6
 
-  packages/others-react:
+  packages/others-ui-react:
     devDependencies:
       '@types/react':
         specifier: ^18.2.18
         version: 18.2.18
       others-ui:
         specifier: workspace:^
-        version: link:../others
+        version: link:../others-ui
       react:
         specifier: ^18.2.0
         version: 18.2.0
 
-  packages/others-vue:
+  packages/others-ui-vue:
     devDependencies:
       vue:
         specifier: ^3.3.4

@@ -7,24 +7,29 @@ import babel from 'rollup-plugin-babel'
 import commonjs from '@rollup/plugin-commonjs'
 
 const __PROD__ = process.env.BUILD === 'production'
+const pkg = [
+  'others-ui',
+  'others-ui-react',
+  'others-ui-vue'
+]
 
 /** @type {import('rollup').RollupOptions[]} */
 const rollupConfig = [
   {
-    input: 'packages/others/src/index.ts',
+    input: `packages/${pkg[0]}/src/index.ts`,
     output: [
       {
-        file: 'packages/others/dist/others.cjs.js',
+        file: `packages/${pkg[0]}/dist/${pkg[0]}.cjs.js`,
         format: 'cjs'
       },
       {
-        file: 'packages/others/dist/others.esm.js',
+        file: `packages/${pkg[0]}/dist/${pkg[0]}.esm.js`,
         format: 'esm'
       },
       {
-        file: "packages/others/dist/others.umd.js",
+        file: `packages/${pkg[0]}/dist/${pkg[0]}.umd.js`,
         format: 'umd',
-        name: 'Others'
+        name: 'OthersUi'
       },
     ],
     plugins: [
@@ -40,22 +45,22 @@ const rollupConfig = [
         __DEV__: `${!__PROD__}`
       }),
       typescript({
-        baseUrl: "./packages/others",
-        tsconfig: "./packages/others/tsconfig.json",
+        baseUrl: `./packages/${pkg[0]}`,
+        tsconfig: `./packages/${pkg[0]}/tsconfig.json`,
         typescript: require('typescript'),
       }),
     ]
   },
   
   {
-    input: 'packages/others-react/src/index.tsx',
+    input: `packages/${pkg[1]}/src/index.tsx`,
     output: [
       {
-        file: 'packages/others-react/dist/others-react.cjs.js',
+        file: `packages/${pkg[1]}/dist/${pkg[1]}.cjs.js`,
         format: 'cjs'
       },
       {
-        file: "packages/others-react/dist/others-react.umd.js",
+        file: `packages/${pkg[1]}/dist/${pkg[1]}.umd.js`,
         format: 'umd',
         name: 'OthersReact'
       },
@@ -73,8 +78,8 @@ const rollupConfig = [
         __DEV__: `${!__PROD__}`
       }),
       typescript({
-        baseUrl: "./packages/others-react",
-        tsconfig: "./packages/others-react/tsconfig.json",
+        baseUrl: `./packages/${pkg[1]}`,
+        tsconfig: `./packages/${pkg[1]}/tsconfig.json`,
         typescript: require('typescript'),
       }),
       babel({

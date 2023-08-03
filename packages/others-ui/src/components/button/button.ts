@@ -7,7 +7,7 @@ export interface ButtonProps {
   block?: boolean
   disabled?: boolean
   loading?: boolean
-  size?: string
+  size?: 'large' | 'middle' | 'small'
   htmlType?: 'submit' | 'reset'
 }
 
@@ -17,7 +17,7 @@ export class Button extends LitElement implements ButtonProps {
   static styles = css`${unsafeCSS(styles)}`
 
   @property({type: String}) type: ButtonProps['type'] = 'default'
-  @property({type: String}) size: ButtonProps['size'] = 'default'
+  @property({type: String}) size: ButtonProps['size'] = 'middle'
   @property({type: Boolean, reflect: true}) block: boolean = false
   @property({type: String, attribute: 'html-type'}) htmlType?: ButtonProps['htmlType']
   @property({type: Boolean}) disabled: boolean = false
