@@ -18,6 +18,10 @@ const rollupConfig = [
         format: 'cjs'
       },
       {
+        file: 'packages/others/dist/others.esm.js',
+        format: 'esm'
+      },
+      {
         file: "packages/others/dist/others.umd.js",
         format: 'umd',
         name: 'Others'
