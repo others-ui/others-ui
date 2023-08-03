@@ -9,6 +9,10 @@
   "keywords": [],
   "author": "yanyunwu",
   "license": "MIT",
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  },
   "devDependencies": {
     "vue": "^3.3.4"
   }

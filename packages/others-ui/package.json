@@ -2,15 +2,26 @@
   "name": "others-ui",
   "version": "0.0.1",
   "type": "module",
-  "description": "",
+  "description": "others-ui",
   "main": "index.js",
+  "module": "dist/others-ui.esm.js",
   "types": "dist/types/index.d.ts",
+  "exports": {
+    ".": "./index.js",
+    "./button": "./dist/packages/components/button/index.js"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": [],
+  "keywords": [
+    "others-ui"
+  ],
   "author": "yanyunwu",
   "license": "MIT",
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  },
   "devDependencies": {
     "lit": "^2.7.6"
   }

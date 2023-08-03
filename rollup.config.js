@@ -20,16 +20,19 @@ const rollupConfig = [
     output: [
       {
         file: `packages/${pkg[0]}/dist/${pkg[0]}.cjs.js`,
-        format: 'cjs'
+        format: 'cjs',
+        sourcemap: !__PROD__
       },
       {
         file: `packages/${pkg[0]}/dist/${pkg[0]}.esm.js`,
-        format: 'esm'
+        format: 'esm',
+        sourcemap: !__PROD__
       },
       {
         file: `packages/${pkg[0]}/dist/${pkg[0]}.umd.js`,
         format: 'umd',
-        name: 'OthersUi'
+        name: 'OthersUi',
+        sourcemap: !__PROD__
       },
     ],
     plugins: [
@@ -57,13 +60,20 @@ const rollupConfig = [
     output: [
       {
         file: `packages/${pkg[1]}/dist/${pkg[1]}.cjs.js`,
-        format: 'cjs'
+        format: 'cjs',
+        sourcemap: !__PROD__
+      },
+      {
+        file: `packages/${pkg[1]}/dist/${pkg[1]}.esm.js`,
+        format: 'esm',
+        sourcemap: !__PROD__
       },
       {
         file: `packages/${pkg[1]}/dist/${pkg[1]}.umd.js`,
         format: 'umd',
-        name: 'OthersReact'
-      },
+        name: 'OthersReact',
+        sourcemap: !__PROD__
+      }
     ],
     plugins: [
       postcss({

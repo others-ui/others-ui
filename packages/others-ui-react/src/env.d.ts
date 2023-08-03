@@ -1,10 +1,12 @@
 import type { ButtonProps } from 'others-ui'
-import type { PropsWithChildren } from 'react'
+import type React from 'react'
+
+type GetReactType<T> = React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement> & T
 
 declare global {
   namespace JSX {
     interface IntrinsicElements {
-      'ot-button': ButtonProps & PropsWithChildren
+      'ot-button': GetReactType<ButtonProps>
     }
   }
 }
