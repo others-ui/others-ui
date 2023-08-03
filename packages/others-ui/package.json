@@ -1,6 +1,6 @@
 {
   "name": "others-ui",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "type": "module",
   "description": "others-ui",
   "main": "index.js",
