@@ -20,7 +20,9 @@
     "test": "web-test-runner",
     "build": "rollup -c --bundleConfigAsCjs --environment BUILD:production",
     "changeset": "changeset",
-    "version": "sh scripts/version.sh"
+    "changeset:version": "sh scripts/version.sh",
+    "changeset:publish": "changeset publish",
+    "release": "sh scripts/release.sh"
   },
   "devDependencies": {
     "@babel/core": "^7.22.9",

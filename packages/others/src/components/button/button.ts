@@ -1,6 +1,6 @@
 import { LitElement, css, html, unsafeCSS } from 'lit'
 import { customElement, property } from 'lit/decorators.js'
-// import styles from './styles.scss'
+import styles from './styles.scss'
 
 export interface ButtonProps {
   type?: 'primary' | 'dashed' | 'default',
@@ -14,7 +14,7 @@ export interface ButtonProps {
 @customElement('ot-button')
 export class Button extends LitElement implements ButtonProps {
 
-  static styles = css`${unsafeCSS('')}`
+  static styles = css`${unsafeCSS(styles)}`
 
   @property({type: String}) type: ButtonProps['type'] = 'default'
   @property({type: String}) size: ButtonProps['size'] = 'default'
