@@ -1,7 +1,7 @@
 import { expect, fixture, html, oneEvent } from '@open-wc/testing'
 import * as sinon from 'sinon'
 import type Button from '../index'
-import '../index'
+import '../../../../dist/others.esm'
 
 describe('Test Button', () => {
   it('should render', async () => {
