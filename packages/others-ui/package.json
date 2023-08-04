@@ -6,10 +6,6 @@
   "main": "index.js",
   "module": "dist/others-ui.esm.js",
   "types": "dist/types/index.d.ts",
-  "exports": {
-    ".": "./index.js",
-    "./button": "./dist/packages/components/button/index.js"
-  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },

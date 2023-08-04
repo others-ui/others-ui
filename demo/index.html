@@ -1,14 +1,14 @@
 <script src="../packages/others-ui/dist/others-ui.umd.js"></script>
 
 
- <ot-form>
+<ot-form>
   <ot-space direction="vertical">
-    <ot-button type="primary" html-type="submit" block size="large">点击切换</ot-button>
+    <ot-button type="primary" html-type="submit" block size="large" disabled>点击切换</ot-button>
     <ot-button type="primary" block>点击切换</ot-button>
     <ot-button type="dashed" block>点击切换</ot-button>
     <ot-button block>点击切换</ot-button>
     <div>
-      <ot-space direction="vertical">
+      <ot-space direction="horizontal">
         <ot-button type="primary" html-type="submit" size="large">点击切换</ot-button>
         <ot-button type="primary">点击切换</ot-button>
         <ot-button type="dashed">点击切换</ot-button>
@@ -16,22 +16,18 @@
       </ot-space>
     </div>
   </ot-space>
+</ot-form>
 
- 
- </ot-form>
-
-  <script>
-    const button = document.querySelector('ot-button')
-    const form = document.querySelector('ot-form')
-    form.addEventListener('submit', (e) => {
-      console.log(e);
-      console.log('submit');
-      e.preventDefault()
-    }) 
-    button.addEventListener('click',(e) => {
-      console.log('e', e);
-      button.block = !button.block
-    })
-  </script>
-</body>
-</html>
+<script>
+  const button = document.querySelector('ot-button')
+  const form = document.querySelector('ot-form')
+  form.addEventListener('submit', (e) => {
+    console.log(e);
+    console.log('submit');
+    e.preventDefault()
+  }) 
+  button.addEventListener('click',(e) => {
+    console.log('e', e);
+    button.block = !button.block
+  })
+</script>

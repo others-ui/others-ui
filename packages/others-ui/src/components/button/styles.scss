@@ -1,7 +1,7 @@
 @import "../../common/styles/theme.sass";
 
 :host {
-  display: inline;
+  display: inline-block;
 }
 
 // block属性
@@ -16,7 +16,8 @@
   border: $border;
 }
 
-button {
+#button {
+  display: inline-block;
   padding: 4px 15px;
   font-size: 14px;
   border-radius: 6px;

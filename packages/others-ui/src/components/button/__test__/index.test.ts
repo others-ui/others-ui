@@ -13,7 +13,7 @@ describe('Test Button', () => {
   it('should has event', async () => {
     const el = await fixture(html`<ot-button type="primary">按钮</ot-button>`) as Button
     const listener = oneEvent(el, 'click')
-    ;(el.shadowRoot?.querySelector('button') as HTMLElement).click()
+    ;(el.shadowRoot?.querySelector('#button') as HTMLElement).click()
     const { detail } = await listener
     console.log('detail', detail)
     expect(detail).to.equal(0)
@@ -23,7 +23,7 @@ describe('Test Button', () => {
     const fn = sinon.stub()
     const el = await fixture(html`<ot-button disabled>按钮</ot-button>`) as Button
     el.addEventListener('click', fn)
-    ;(el.shadowRoot?.querySelector('button') as HTMLElement).click()
+    ;(el.shadowRoot?.querySelector('#button') as HTMLElement).click()
     expect(fn).not.to.have.callCount(1)
   })
 })

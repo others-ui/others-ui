@@ -5,6 +5,6 @@ import type {
 } from 'others-ui'
 
 export type ButtonProps = OtButtonProps
-export const Button= forwardRef<OtButton, ButtonProps>((props, ref) => {
+export const Button: React.FC<OtButtonProps> = forwardRef<OtButton, ButtonProps>((props, ref) => {
   return <ot-button ref={ref} {...props}></ot-button>
 })

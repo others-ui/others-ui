@@ -1,4 +1,4 @@
 'use strict'
 
-module.exports = require('./dist/others-react.cjs.js')
+module.exports = require('./dist/others-ui-react.cjs.js')
 
