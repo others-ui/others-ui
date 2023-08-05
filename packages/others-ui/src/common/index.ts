@@ -1,0 +1,1 @@
+export const prefix = process.env.OTHER_PREFIX

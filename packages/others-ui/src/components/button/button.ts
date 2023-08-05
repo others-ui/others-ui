@@ -1,6 +1,7 @@
 import { LitElement, css, html, unsafeCSS } from 'lit'
 import { customElement, property } from 'lit/decorators.js'
 import { ifDefined } from 'lit/directives/if-defined.js'
+import { prefix } from '../../common'
 import styles from './styles.scss'
 
 export interface ButtonProps {
@@ -12,7 +13,7 @@ export interface ButtonProps {
   htmlType?: 'submit' | 'reset'
 }
 
-@customElement('ot-button')
+@customElement(`${prefix}-button`)
 export class Button extends LitElement implements ButtonProps {
 
   static styles = css`${unsafeCSS(styles)}`
@@ -26,6 +27,7 @@ export class Button extends LitElement implements ButtonProps {
   render() {  
     return html`
       <span 
+        part="button"
         id="button"
         type=${ifDefined(this.type)}
         size=${ifDefined(this.size)}

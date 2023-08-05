@@ -1,12 +1,17 @@
 {
   "name": "@others-ui/react",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "",
-  "type": "module",
-  "main": "index.js",
-  "types": "dist/types/index.d.ts",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+  "main": "./index.js",
+  "module": "./dist/others-ui-react.esm.js",
+  "types": "./dist/types/index.d.ts",
+  "exports": {
+    ".": {
+      "require": "./index.js",
+      "node": "./index.mjs",
+      "import": "./dist/others-ui-react.esm.js",
+      "types": "./dist/types/index.d.ts"
+    }
   },
   "keywords": [],
   "author": "yanyunwu",
@@ -15,9 +20,14 @@
     "access": "public",
     "registry": "https://registry.npmjs.org/"
   },
+  "dependencies": {
+    "others-ui": "workspace:^"
+  },
   "devDependencies": {
     "@types/react": "^18.2.18",
-    "others-ui": "workspace:^",
     "react": "^18.2.0"
+  },
+  "peerDependencies": {
+    "react": ">= 16"
   }
 }

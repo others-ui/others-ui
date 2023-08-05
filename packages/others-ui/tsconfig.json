@@ -2,7 +2,8 @@
   "extends": "../../tsconfig.json",
   "compilerOptions": {
     "declaration": true,
-    "declarationDir": "./types",
+    "declarationDir": "./dist/types",
+    "outDir": "./dist"
   },
   "include": ["src", "../../env.d.ts"],
   "exclude": ["node_modules", "dist", "./**/__test__"]

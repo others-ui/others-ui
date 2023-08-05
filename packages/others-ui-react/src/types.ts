@@ -1,0 +1,1 @@
+export type GetReactType<T> = React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement> & T

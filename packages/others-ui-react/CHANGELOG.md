@@ -1,5 +1,11 @@
 # @others-ui/react
 
+## 0.0.2
+
+### Patch Changes
+
+- 480b2f9: 优化打包配置
+
 ## 0.0.1
 
 ### Patch Changes
