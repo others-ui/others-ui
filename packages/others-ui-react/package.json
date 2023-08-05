@@ -1,6 +1,6 @@
 {
   "name": "@others-ui/react",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "",
   "main": "./index.js",
   "module": "./dist/others-ui-react.esm.js",
