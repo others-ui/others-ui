@@ -104,6 +104,9 @@ importers:
 
   packages/others-ui:
     dependencies:
+      '@lit-labs/context':
+        specifier: ^0.3.3
+        version: 0.3.3
       lit:
         specifier: ^2.8.0
         version: 2.8.0
@@ -2061,6 +2064,13 @@ packages:
       '@jridgewell/resolve-uri': 3.1.0
       '@jridgewell/sourcemap-codec': 1.4.15
     dev: true
+
+  /@lit-labs/context@0.3.3:
+    resolution: {integrity: sha512-5pWPLiXJnx8fZREF4w7RXBwJOxqRBJ57tujo7k23s0ZDfnSltomvYGW4kTOurXfyzDR0OLBBkv9xsWGDhauqew==}
+    dependencies:
+      '@lit/reactive-element': 1.6.2
+      lit: 2.8.0
+    dev: false
 
   /@lit-labs/ssr-dom-shim@1.1.1:
     resolution: {integrity: sha512-kXOeFbfCm4fFf2A3WwVEeQj55tMZa8c8/f9AKHMobQMkzNUfUj+antR3fRPaZJawsa1aZiP/Da3ndpZrwEe4rQ==}

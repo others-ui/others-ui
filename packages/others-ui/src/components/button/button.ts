@@ -1,8 +1,11 @@
 import { LitElement, css, html, unsafeCSS } from 'lit'
 import { customElement, property } from 'lit/decorators.js'
 import { ifDefined } from 'lit/directives/if-defined.js'
+import { ContextConsumer } from '@lit-labs/context'
+import { FormContext } from '../../context/FormContext'
 import { prefix } from '../../common'
 import styles from './styles.scss'
+
 
 export interface ButtonProps {
   type?: 'primary' | 'dashed' | 'default',
@@ -16,6 +19,8 @@ export interface ButtonProps {
 @customElement(`${prefix}-button`)
 export class Button extends LitElement implements ButtonProps {
 
+  formContext = new ContextConsumer(this, { context: FormContext })
+
   static styles = css`${unsafeCSS(styles)}`
 
   @property({type: String}) type: ButtonProps['type'] = 'default'
@@ -26,7 +31,7 @@ export class Button extends LitElement implements ButtonProps {
 
   render() {  
     return html`
-      <span 
+      <span
         part="button"
         id="button"
         type=${ifDefined(this.type)}
@@ -46,7 +51,9 @@ export class Button extends LitElement implements ButtonProps {
       return
     }
     if (this.htmlType === 'submit') {
-      this.dispatchEvent(new SubmitEvent('submit', { bubbles: true }))
+      this.formContext.value?.submit()
+    } else if (this.htmlType === 'reset') {
+      this.formContext.value?.reset()
     }
   }
 }

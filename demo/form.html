@@ -1,0 +1,22 @@
+<script src="../packages/others-ui/dist/others-ui.umd.js"></script>
+
+
+<ot-form>
+  <ot-input name="name" /></ot-input>
+  <ot-input name="age" value="14"/></ot-input>
+  <ot-button html-type="submit">
+    提交
+  </ot-button>
+  <ot-button html-type="reset">
+    重置
+  </ot-button>
+</ot-form>
+
+<script>
+  const form = document.querySelector('ot-form')
+  const button = document.querySelector('ot-button')
+
+  form.addEventListener('submit', (e) => {
+    console.log('form submit', e);
+  })
+</script>
