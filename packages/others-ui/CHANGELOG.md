@@ -1,5 +1,11 @@
 # others
 
+## 0.0.5
+
+### Patch Changes
+
+- ddf15c2: 测试发布
+
 ## 0.0.4
 
 ### Patch Changes
