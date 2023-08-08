@@ -71,9 +71,15 @@ importers:
       eslint:
         specifier: ^8.46.0
         version: 8.46.0
+      execa:
+        specifier: ^7.2.0
+        version: 7.2.0
       husky:
         specifier: ^8.0.0
         version: 8.0.3
+      jsonfile:
+        specifier: ^6.1.0
+        version: 6.1.0
       lint-staged:
         specifier: ^13.2.3
         version: 13.2.3

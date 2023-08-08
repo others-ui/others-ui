@@ -43,7 +43,6 @@ export class Form extends LitElement implements FormProps {
 
   private onReset() {
     this.values = {...this.initValues}
-    // console.log()
     this.provider.updateObservers()
   }
 
