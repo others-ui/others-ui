@@ -36,18 +36,43 @@ export class Button extends BaseElement implements ButtonProps {
   @property({type: Boolean})
   public submit: boolean = false
 
+  constructor() {
+    super()
+    this._onclick = null
+  }
+
   // 拦截自定义事件
   addEventListener(
     type: keyof HTMLElementEventMap,
     listener: (e: Event) => void
   ) {
-    super.addEventListener(type, (e) => {
+    const fn = (e: Event) => {
       if (type == 'click' && (this.loading || this.disabled)) {
         return
       }
       listener.call(this, e)
-    })
+    }
+    super.addEventListener(type, fn)
+    return fn
   }
+
+  // 代理原生onclick事件
+  private _onclick: ((e: Event) => void) | null
+  set onclick(fn: (e: Event) => void) {
+    if (typeof fn === 'function') {
+      this._onclick = this.addEventListener('click', fn)
+    } else {
+      if (this._onclick) {
+        this.removeEventListener('click', this._onclick)
+      }
+    }
+  }
+
+  get onclick(): ((e: Event) => void) | null {
+    return this._onclick
+  }
+
+
 
   render() {
     return html`

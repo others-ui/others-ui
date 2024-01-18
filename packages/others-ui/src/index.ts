@@ -1,2 +1,2 @@
-export * from './index.umd'
-export * as default from './components'
+export * from './main'
+export * as default from './main'

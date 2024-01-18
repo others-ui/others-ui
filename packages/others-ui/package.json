@@ -9,7 +9,6 @@
     ".": {
       "import": {
         "types": "./dist/types/index.d.ts",
-        "node": "./index.mjs",
         "default": "./dist/others-ui.esm.js"
       },
       "require": {

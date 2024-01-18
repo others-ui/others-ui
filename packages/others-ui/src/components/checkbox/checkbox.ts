@@ -58,7 +58,6 @@ export class Checkbox<T> extends BaseElement implements CheckboxProps<T> {
 
     watch(state, {
       checkboxGroupContext: () => {
-        console.log('checkboxGroupContext', this.value)
         if (this.value !== undefined) {
           if (this.groupValue.includes(this.value)) {
             this.isChecked = true

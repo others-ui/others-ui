@@ -4,6 +4,7 @@ import { FormContext, FormContextValue } from '../../context/FormContext'
 import styles from './styles/form.scss'
 import { BaseElement } from '../../common'
 import { property, state } from 'lit/decorators.js'
+import { toObject } from '../../utils/convert'
 export interface FormProps<T extends Record<string, unknown> = Record<string, unknown>> {
   initialValues?: T
   values?: T
@@ -14,7 +15,7 @@ export class Form<T extends Record<string, unknown> = Record<string, unknown>> e
   static styles = css`${unsafeCSS(styles)}`
 
   // 初始化的状态
-  @property({type: Object})
+  @property({type: Object, converter: (value) => value && toObject(value)})
   public initialValues?: T
 
   // 表单状态
@@ -45,6 +46,10 @@ export class Form<T extends Record<string, unknown> = Record<string, unknown>> e
 
   connectedCallback() {
     super.connectedCallback()
+    this.init()
+  }
+
+  private init() {
     // 初始化
     this._values = this.initialValues || ({} as T)
 
@@ -53,7 +58,6 @@ export class Form<T extends Record<string, unknown> = Record<string, unknown>> e
       values: this._values || ({} as T),
       setValue: (name, value) => {
         this._values = {...this._values, [name]: value}
-
       },
     }
   }

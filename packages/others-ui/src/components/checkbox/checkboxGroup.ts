@@ -9,6 +9,8 @@ import {
 import { BaseElement } from '../../common'
 import styles from './styles/checkbox-group.scss'
 import { watch } from '../../utils/watch'
+import { FormItemMixin } from '../../mixins/FormMixin'
+import { FormItemContextValue } from '../../context/FormItemContext'
 
 
 export interface CheckboxGroupProps<T> {
@@ -16,7 +18,7 @@ export interface CheckboxGroupProps<T> {
 }
 
 
-export class CheckboxGroup<T> extends BaseElement implements CheckboxGroupProps<T> {
+export class CheckboxGroup<T> extends FormItemMixin<typeof BaseElement, unknown[]>(BaseElement) implements CheckboxGroupProps<T> {
   static componentName = 'checkbox-group'
   static styles = css`${unsafeCSS(styles)}`
 
@@ -43,6 +45,7 @@ export class CheckboxGroup<T> extends BaseElement implements CheckboxGroupProps<
 
 
   private onChange(e: T[]) {
+    this.formItemValue = [...e]
     this._value = [...e]
     this.emit('change', [...e])
   }
@@ -54,10 +57,14 @@ export class CheckboxGroup<T> extends BaseElement implements CheckboxGroupProps<
     } as CheckboxGroupContextValue<T>
   }
 
-  protected willUpdate(state: PropertyValueMap<CheckboxGroupProps<T> & { _value: T[] }>) {
+  protected willUpdate(state: PropertyValueMap<CheckboxGroupProps<T> & { _value: T[], formItemContext: FormItemContextValue<T[]> }>) {
     watch(state, {
+      formItemContext: () => {
+        log('formItemContext')
+        this._value = [...this.formItemValue as T[] || []]
+      },
       _value: () => {
-        console.log('_value change')
+        log('_value change')
         this.setValue(this._value ?? [])
       },
       value: () => {
