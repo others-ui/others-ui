@@ -1,0 +1,22 @@
+
+
+/** ==========> 基础颜色 <========== */
+$primary-color: #2b5aed; // 默认色
+$primary-color-light: lighten($primary-color, 10%);
+$primary-color-dark: darken($primary-color, 10%);
+
+$success-color: #1fb4a2; // 成功色
+$success-color-light: lighten($success-color, 10%);
+$success-color-dark: darken($success-color, 10%);
+
+$warn-color: #ffaa1a; // 警告色
+$warn-color-light: lighten($warn-color, 10%);
+$warn-color-dark: darken($warn-color, 10%);
+
+$error-color: #fa5247; // 错误色
+$error-color-light: lighten($error-color, 10%);
+$error-color-dark: darken($error-color, 10%);
+
+
+
+

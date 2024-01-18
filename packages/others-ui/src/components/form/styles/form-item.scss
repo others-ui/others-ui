@@ -1,0 +1,26 @@
+@import '../../../common/styles.scss';
+
+
+:host {
+  display: block;
+}
+
+.container {
+  height: 50px;
+  display: flex;
+  align-items: center;
+
+  .label {
+    width: 80px;
+    font-size: 14px;
+  }
+
+  .wrapper {
+    flex: 1;
+    ::slotted(*) {
+      vertical-align: top;
+    }
+  }
+}
+
+

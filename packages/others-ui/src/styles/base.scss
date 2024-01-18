@@ -1,0 +1,30 @@
+@import "./color.scss";
+
+$g__prefix: others-ui;
+
+:root {
+  --#{$g__prefix}-primary: #{$primary-color};
+  --#{$g__prefix}-primary-light: #{$primary-color-light};
+  --#{$g__prefix}-primary-dark: #{$primary-color-dark};
+
+  --#{$g__prefix}-success: #{$success-color};
+  --#{$g__prefix}-success-light: #{$success-color-light};
+  --#{$g__prefix}-success-dark: #{$success-color-dark};
+
+  --#{$g__prefix}-warn: #{$warn-color};
+  --#{$g__prefix}-warn-light: #{$warn-color-light};
+  --#{$g__prefix}-warn-dark: #{$warn-color-dark};
+
+  --#{$g__prefix}-error: #{$error-color};
+  --#{$g__prefix}-error-light: #{$error-color-light};
+  --#{$g__prefix}-error-dark: #{$error-color-dark};
+
+
+
+  &[mode=dark] {
+    --#{$g__prefix}-primary: #{$primary-color};
+    --#{$g__prefix}-success: #{$success-color};
+    --#{$g__prefix}-warn: #{$warn-color};
+    --#{$g__prefix}-error: #{$error-color};
+  }
+}

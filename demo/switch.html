@@ -1,0 +1,26 @@
+<script src="../packages/others-ui/dist/others-ui.umd.js"></script>
+<link rel="stylesheet" href="../packages/others-ui/dist/others-ui.css">
+
+
+<ot-form>
+  <ot-switch></ot-switch>
+  <ot-button>
+    切换
+  </ot-button>
+</ot-form>
+
+<div>
+  <span>
+    31231
+  </span>
+</div>
+
+
+<script>
+  OthersUi.register()
+  const switchItem = document.querySelector('ot-switch')
+  const button = document.querySelector('ot-button')
+  button.onclick = () => {
+    switchItem.value = !switchItem.value
+  }
+</script>

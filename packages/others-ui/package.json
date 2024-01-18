@@ -1,0 +1,35 @@
+{
+  "name": "others-ui",
+  "version": "0.0.5",
+  "description": "others-ui",
+  "main": "./index.js",
+  "module": "./dist/others-ui.esm.js",
+  "types": "./dist/types/index.d.ts",
+  "exports": {
+    ".": {
+      "import": {
+        "types": "./dist/types/index.d.ts",
+        "node": "./index.mjs",
+        "default": "./dist/others-ui.esm.js"
+      },
+      "require": {
+        "types": "./dist/types/index.d.ts",
+        "default": "./index.js"
+      }
+    },
+    "./others-ui.css": "./dist/others-ui.css"
+  },
+  "keywords": [
+    "others-ui"
+  ],
+  "author": "yanyunwu",
+  "license": "MIT",
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  },
+  "dependencies": {
+    "@lit/context": "^1.1.0",
+    "lit": "^3.1.1"
+  }
+}

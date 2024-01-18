@@ -1,0 +1,58 @@
+@import '../../../common/styles.scss';
+
+:host {
+  display: inline-block;
+  height: 24px;
+}
+
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  height: 100%;
+
+  input {
+    display: none;
+
+    &:checked + .checkbox {
+      background-color: var(--#{$g__prefix}-primary);
+      border-color: var(--#{$g__prefix}-primary);
+
+      &::before {
+        content: "";
+        display: inline-block;
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 4px;
+        height: 7px;
+        border-bottom: 2px solid white;
+        border-right: 2px solid white;
+        transform: rotate(45deg) scale(1.1) translate(-6%, -20%);
+        transform-origin: left bottom;
+      }
+    }
+  }
+
+  .checkbox {
+    display: inline-block;
+    position: relative;
+    width: 14px;
+    height: 14px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    transition: all .3s;
+
+    &:hover {
+      border-color: var(--#{$g__prefix}-primary-light);
+    }
+  }
+
+  .text {
+    font-size: 14px;
+    line-height: 16px;
+    margin-left: 8px;
+  }
+}

@@ -1,0 +1,6 @@
+#!/usr/bin/env sh
+. "$(dirname -- "$0")/_/husky.sh"
+
+echo "当前node版本: $(node -v)"
+echo "当前pnpm版本: $(pnpm -v)"
+pnpm run lint-staged

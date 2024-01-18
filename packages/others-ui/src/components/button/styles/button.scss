@@ -1,0 +1,122 @@
+@import '../../../common/styles.scss';
+@import './variable.scss';
+
+div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+svg {
+  width: 14px;
+  height: 14px;
+  margin-right: 6px;
+}
+
+:host {
+  display: inline-block;
+  padding: 4px 15px;
+  font-size: 14px;
+  border-radius: $button_border-radius;
+  cursor: pointer;
+  user-select: none;
+  text-align: center;
+  border: 1px solid rgba(0, 0, 0, .3);
+  transition: all 0.3s;
+}
+
+:host(:hover) {
+  color: var(--#{$g__prefix}-primary-light);
+  border-color: var(--#{$g__prefix}-primary-light);
+}
+
+:host(:active) {
+  color: var(--#{$g__prefix}-primary-dark);
+  border-color: var(--#{$g__prefix}-primary-dark);
+}
+
+// block属性
+:host([block]) {
+  display: block;
+}
+
+// disabled属性
+:host([disabled]) {
+  pointer-events: none;
+}
+
+// size属性
+// type=small
+:host([size="small"]) {
+  font-size: 14px;
+  padding: 0 7px;
+}
+
+// type=large
+:host([size="large"]) {
+  font-size: 14px;
+  padding: 7px 15px;
+}
+
+// type属性
+// type=primary
+:host([type="primary"]) {
+  color: white;
+  background-color: var(--#{$g__prefix}-primary);
+  border: none;
+}
+
+:host([type="primary"]:hover) {
+  background-color: var(--#{$g__prefix}-primary-light);
+}
+
+:host([type="primary"]:active) {
+  background-color: var(--#{$g__prefix}-primary-dark);
+}
+
+// type=success
+:host([type="success"]) {
+  color: white;
+  background-color: var(--#{$g__prefix}-success);
+  border: none;
+}
+
+:host([type="success"]:hover) {
+  background-color: var(--#{$g__prefix}-success-light);
+}
+
+:host([type="success"]:active) {
+  background-color: var(--#{$g__prefix}-success-dark);
+}
+
+// type=warn
+:host([type="warn"]) {
+  color: white;
+  background-color: var(--#{$g__prefix}-warn);
+  border: none;
+}
+
+:host([type="warn"]:hover) {
+  background-color: var(--#{$g__prefix}-warn-light);
+}
+
+:host([type="warn"]:active) {
+  background-color: var(--#{$g__prefix}-warn-dark);
+}
+
+// type=error
+:host([type="error"]) {
+  color: white;
+  background-color: var(--#{$g__prefix}-error);
+  border: none;
+}
+
+:host([type="error"]:hover) {
+  background-color: var(--#{$g__prefix}-error-light);
+}
+
+:host([type="error"]:active) {
+  background-color: var(--#{$g__prefix}-error-dark);
+}
+
+

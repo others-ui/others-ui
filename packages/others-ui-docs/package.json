@@ -1,0 +1,19 @@
+{
+  "name": "others-ui-docs",
+  "version": "0.0.1",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "docs:dev": "vitepress dev",
+    "docs:build": "vitepress build",
+    "docs:preview": "vitepress preview"
+  },
+  "dependencies": {
+    "@vitepress-demo-preview/component": "^2.3.2",
+    "others-ui": "workspace:*",
+    "vue": "^3.3.4"
+  },
+  "devDependencies": {
+    "vitepress": "1.0.0-rc.39"
+  }
+}

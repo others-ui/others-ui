@@ -1,0 +1,24 @@
+:host {
+  display: block;
+}
+
+:host([direction="horizontal"]) {
+
+  ::slotted(*) {
+    margin-right: 20px;
+    vertical-align: top;
+  }
+  ::slotted(*:last-child) {
+    margin-right: 0;
+  }
+}
+
+:host([direction="vertical"]) {
+  ::slotted(*) {
+    margin-bottom: 20px;
+  }
+  ::slotted(*:last-child) {
+    margin-bottom: 0;
+  }
+}
+
