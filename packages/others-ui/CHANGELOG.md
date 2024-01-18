@@ -1,5 +1,11 @@
 # others
 
+## 0.0.6
+
+### Patch Changes
+
+- d0be707: form 表单相关组件初步搭建
+
 ## 0.0.5
 
 ### Patch Changes
