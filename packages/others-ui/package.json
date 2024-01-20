@@ -1,6 +1,6 @@
 {
   "name": "others-ui",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "description": "others-ui",
   "main": "./index.js",
   "module": "./dist/others-ui.esm.js",

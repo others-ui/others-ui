@@ -1,5 +1,11 @@
 # others
 
+## 0.0.7
+
+### Patch Changes
+
+- a203e49: 进一步完善
+
 ## 0.0.6
 
 ### Patch Changes
