@@ -23,7 +23,8 @@
     "changeset:version": "sh scripts/version.sh",
     "changeset:publish": "changeset publish",
     "release": "node ./scripts/release.js",
-    "docs:dev": "pnpm --filter others-ui-docs run docs:dev "
+    "docs:dev": "pnpm --filter others-ui-docs run docs:dev",
+    "docs:build": "pnpm --filter others-ui-docs run docs:build"
   },
   "devDependencies": {
     "@babel/core": "^7.22.9",

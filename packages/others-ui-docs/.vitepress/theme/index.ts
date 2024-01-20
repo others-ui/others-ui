@@ -1,9 +1,11 @@
 // https://vitepress.dev/guide/custom-theme
-import { h } from 'vue'
+import { h, version } from 'vue'
 import Theme from 'vitepress/theme'
 import O, {register} from 'others-ui'
 import 'others-ui/others-ui.css'
 import './style.css'
+
+console.log('vue version', version)
 
 import {
   AntDesignContainer,
@@ -23,6 +25,7 @@ export default {
     })
   },
   enhanceApp({ app, router, siteData }) {
+    app.config.compilerOptions.isCustomElement = (tag: string) => tag.startsWith('ot-')
     app.component('demo-preview', AntDesignContainer)
   },
 }

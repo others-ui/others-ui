@@ -8,6 +8,8 @@ import commonjs from '@rollup/plugin-commonjs'
 import path from 'node:path'
 
 const __PROD__ = process.env.BUILD === 'production'
+const __PREFIX__ = 'ot'
+const __UMD_GLOBAL_NAME__ = 'OthersUI'
 const pkg = [
   'others-ui'
 ]
@@ -48,7 +50,7 @@ function getPlugins(name, format) {
     replace({
       preventAssignment: true,
       __DEV__: `${!__PROD__}`,
-      'process.env.OTHER_PREFIX': `'ot'`
+      'process.env.OTHER_PREFIX': `'${__PREFIX__}'`
     }),
     typescript({
       baseUrl: `./packages/${name}`,
@@ -83,7 +85,7 @@ function getRollupConfig(name, format) {
 
   if (['umd'].includes(format)) {
     pkgConfig.input =  `./packages/${name}/src/index.umd.ts`
-    pkgConfig.output.name = 'OthersUi'
+    pkgConfig.output.name = __UMD_GLOBAL_NAME__
   }
 
   if(['cjs'].includes(format)) {

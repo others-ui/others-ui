@@ -15,13 +15,15 @@
         <ot-form-item label="是否成年" name="switch">
           <ot-switch />
         </ot-form-item>
-        <ot-form-item label="兴趣爱好">
-          <ot-space>
-            <ot-checkbox>做运动</ot-checkbox>
-            <ot-checkbox>看书</ot-checkbox>
-            <ot-checkbox>吃饭</ot-checkbox>
-            <ot-checkbox>睡觉</ot-checkbox>
-          </ot-space>
+        <ot-form-item label="兴趣爱好" name="hobby">
+          <ot-checkbox-group>
+            <ot-space>
+              <ot-checkbox value="1">做运动</ot-checkbox>
+              <ot-checkbox value="2">看书</ot-checkbox>
+              <ot-checkbox value="3">吃饭</ot-checkbox>
+              <ot-checkbox value="4">睡觉</ot-checkbox>
+            </ot-space>
+          </ot-checkbox-group>
         </ot-form-item>
          <ot-form-item>
            <ot-button @click="onClick" type="primary" block>提交</ot-button>
@@ -35,7 +37,8 @@
   import { ref } from 'vue'
   const form = ref()
   const initialValues = {
-    name: "无名"
+    name: "无名",
+    hobby: ['2']
   }
 
   const onClick = () => {

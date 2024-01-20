@@ -19,7 +19,7 @@
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true,
-    "outDir": "dist"
+    "outDir": "docs"
   },
-  "exclude": ["node_modules"]
+  "exclude": ["node_modules", "docs"]
 }
