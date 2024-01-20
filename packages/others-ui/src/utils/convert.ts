@@ -1,7 +1,5 @@
 
 export function toObject(value: string): object | null {
-  console.log('value', value)
-
   try {
     return JSON.parse(value)
   } catch {

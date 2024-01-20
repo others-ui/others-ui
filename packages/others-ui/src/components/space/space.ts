@@ -12,7 +12,8 @@ export class Space extends BaseElement implements SpaceProps {
 
   static styles = css`${unsafeCSS(styles)}`
 
-  @property({type: String, reflect: true}) direction: SpaceProps['direction'] = 'horizontal'
+  @property({type: String, reflect: true})
+  public direction: SpaceProps['direction'] = 'horizontal'
 
   render() {
     return html`<slot></slot>`

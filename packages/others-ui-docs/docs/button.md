@@ -6,7 +6,7 @@
 
 <div>
   <ot-space direction="vertical">
-    <ot-button block type="primary" class="test">默认</ot-button>
+    <ot-button block type="primary">默认</ot-button>
     <ot-button block type="success">默认</ot-button>
     <ot-button block type="warn">默认</ot-button>
     <ot-button block type="error">默认</ot-button>
@@ -26,6 +26,7 @@
 
 <div>
   <ot-space direction="vertical">
+    <ot-button block disabled>默认禁用</ot-button>
     <ot-button block type="primary">默认</ot-button>
     <ot-button block type="primary" size="small">small</ot-button>
     <ot-button block type="primary" size="large">large</ot-button>
@@ -93,6 +94,14 @@
   }
 </script>
 ```
+
+## 禁用
+<ot-space direction="vertical">
+  <ot-button block type="primary" disabled>默认</ot-button>
+  <ot-button block type="success" disabled>默认</ot-button>
+  <ot-button block type="warn" disabled>默认</ot-button>
+  <ot-button block type="error" disabled>默认</ot-button>
+</ot-space>
 
 <script setup>
   import { ref } from 'vue'

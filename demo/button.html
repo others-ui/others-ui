@@ -31,9 +31,18 @@
 <script>
   const button = document.querySelector('ot-button')
   button.onclick = (e) => {
-    console.log('e', e);
+    console.log('e', e, this);
     button.block = !button.block
   }
+  const aaa  = function(e) {
+       console.log('e', e, this);
+    button.block = !button.block
+  }
+  const fn = button.addEventListener('click', aaa)
+  console.dir(button)
+
+  button.onclick = null
+  button.removeEventListener('click', fn)
 
   console.log('button.onclick', button.onclick)
 </script>

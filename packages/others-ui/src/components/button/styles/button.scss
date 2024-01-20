@@ -42,7 +42,7 @@ svg {
 
 // disabled属性
 :host([disabled]) {
-  pointer-events: none;
+  cursor: not-allowed;
 }
 
 // size属性
@@ -58,6 +58,12 @@ svg {
   padding: 7px 15px;
 }
 
+:host(:not([type])[disabled]), :host(:not([type])[disabled]:active) {
+  color: #7e7979;
+  background-color: #ccc;
+  border-color: #ccc;
+}
+
 // type属性
 // type=primary
 :host([type="primary"]) {
@@ -66,11 +72,11 @@ svg {
   border: none;
 }
 
-:host([type="primary"]:hover) {
+:host([type="primary"]:hover), :host([type="primary"][disabled]) {
   background-color: var(--#{$g__prefix}-primary-light);
 }
 
-:host([type="primary"]:active) {
+:host([type="primary"]:not([disabled]):active) {
   background-color: var(--#{$g__prefix}-primary-dark);
 }
 
@@ -81,11 +87,11 @@ svg {
   border: none;
 }
 
-:host([type="success"]:hover) {
+:host([type="success"]:hover), :host([type="success"][disabled]) {
   background-color: var(--#{$g__prefix}-success-light);
 }
 
-:host([type="success"]:active) {
+:host([type="success"]:not([disabled]):active) {
   background-color: var(--#{$g__prefix}-success-dark);
 }
 
@@ -96,11 +102,11 @@ svg {
   border: none;
 }
 
-:host([type="warn"]:hover) {
+:host([type="warn"]:hover), :host([type="warn"][disabled]) {
   background-color: var(--#{$g__prefix}-warn-light);
 }
 
-:host([type="warn"]:active) {
+:host([type="warn"]:not([disabled]):active) {
   background-color: var(--#{$g__prefix}-warn-dark);
 }
 
@@ -111,11 +117,11 @@ svg {
   border: none;
 }
 
-:host([type="error"]:hover) {
+:host([type="error"]:hover), :host([type="error"][disabled]) {
   background-color: var(--#{$g__prefix}-error-light);
 }
 
-:host([type="error"]:active) {
+:host([type="error"]:not([disabled]):active) {
   background-color: var(--#{$g__prefix}-error-dark);
 }
 
