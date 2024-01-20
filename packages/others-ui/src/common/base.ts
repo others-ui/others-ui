@@ -27,11 +27,10 @@ export class BaseElement extends LitElement {
   // 代理事件封装
   protected eventAgent: Record<keyof HTMLElementEventMap, ((this: this, e: Event) => boolean) | boolean>
   private onEventMap = new Map<string, (e: Event) => void>
-  private eventMap = new Map<(e: Event) => void, (e: Event) => void>
+  private _eventMap: Map<(e: Event) => void, (e: Event) => void> = new Map()
 
   constructor() {
     super()
-    super.remove
     this.eventAgent = {} as Record<keyof HTMLElementEventMap, ((this: this, e: Event) => boolean) | boolean>
   }
 
@@ -42,6 +41,12 @@ export class BaseElement extends LitElement {
     listener: (e: Event) => void,
     options?: boolean | AddEventListenerOptions
   ) {
+    // 为lit做兼容
+    if (!this._eventMap) {
+      super.addEventListener(type, listener, options)
+      return listener
+    }
+
     const fn = (e: Event) => {
       // 没有设置规则
       if (this.eventAgent[type] === undefined) {
@@ -69,7 +74,7 @@ export class BaseElement extends LitElement {
       warn('Please pass in the correct parameters')
       return listener.call(this, e)
     }
-    this.eventMap.set(listener, fn)
+    this._eventMap.set(listener, fn)
     super.addEventListener(type, fn, options)
     return fn
   }
@@ -79,8 +84,8 @@ export class BaseElement extends LitElement {
     listener: (e: Event) => void,
     options?: boolean | EventListenerOptions
   ) {
-    const realListener = this.eventMap.has(listener)
-      ? this.eventMap.get(listener)
+    const realListener = this._eventMap.has(listener)
+      ? this._eventMap.get(listener)
       : listener
     super.removeEventListener(type, realListener!, options)
     super.removeEventListener(type, listener, options)
