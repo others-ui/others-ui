@@ -24,7 +24,8 @@
     "changeset:publish": "changeset publish",
     "release": "node ./scripts/release.js",
     "docs:dev": "pnpm --filter others-ui-docs run docs:dev",
-    "docs:build": "pnpm --filter others-ui-docs run docs:build"
+    "docs:build": "pnpm --filter others-ui-docs run docs:build",
+    "docs:release": "node ./scripts/build-docs.js"
   },
   "devDependencies": {
     "@babel/core": "^7.22.9",
@@ -39,6 +40,7 @@
     "@rollup/plugin-replace": "^5.0.2",
     "@rollup/plugin-terser": "^0.4.3",
     "@rollup/plugin-typescript": "^11.1.2",
+    "@types/fs-extra": "^11.0.4",
     "@types/mocha": "^10.0.1",
     "@types/node": "^20.4.5",
     "@types/sinon": "^10.0.16",
@@ -49,6 +51,7 @@
     "chai": "^4.3.7",
     "eslint": "^8.46.0",
     "execa": "^7.2.0",
+    "fs-extra": "^11.2.0",
     "husky": "^8.0.0",
     "jsonfile": "^6.1.0",
     "lint-staged": "^13.2.3",

@@ -1,0 +1,1 @@
+import{_ as e,c as a,o as t,V as o}from"./chunks/framework.KawmwmWz.js";const m=JSON.parse('{"title":"others-ui-docs","description":"","frontmatter":{},"headers":[],"relativePath":"CHANGELOG.md","filePath":"CHANGELOG.md"}'),s={name:"CHANGELOG.md"},r=o("",4),c=[r];function i(h,n,d,l,_,u){return t(),a("div",null,c)}const f=e(s,[["render",i]]);export{m as __pageData,f as default};
