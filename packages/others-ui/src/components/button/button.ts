@@ -1,7 +1,7 @@
 import { css, html, nothing, unsafeCSS } from 'lit'
 import { property } from 'lit/decorators.js'
 import styles from './styles/button.scss'
-import { loading } from '../icon/loading'
+import { loading } from '../icon/icons/loading'
 import { BaseElement } from '../../common'
 
 export interface ButtonProps {
@@ -36,43 +36,16 @@ export class Button extends BaseElement implements ButtonProps {
   @property({type: Boolean})
   public submit: boolean = false
 
+  protected eventAgent: Record<string, boolean | ((this: this, e: Event) => boolean)> = {
+    click() {
+      return !(this.loading || this.disabled)
+    }
+  }
+
   constructor() {
     super()
-    this._onclick = null
+    this.startProxyOnEventListener()
   }
-
-  // 拦截自定义事件
-  addEventListener(
-    type: keyof HTMLElementEventMap,
-    listener: (e: Event) => void
-  ) {
-    const fn = (e: Event) => {
-      if (type == 'click' && (this.loading || this.disabled)) {
-        return
-      }
-      listener.call(this, e)
-    }
-    super.addEventListener(type, fn)
-    return fn
-  }
-
-  // 代理原生onclick事件
-  private _onclick: ((e: Event) => void) | null
-  set onclick(fn: (e: Event) => void) {
-    if (typeof fn === 'function') {
-      this._onclick = this.addEventListener('click', fn)
-    } else {
-      if (this._onclick) {
-        this.removeEventListener('click', this._onclick)
-      }
-    }
-  }
-
-  get onclick(): ((e: Event) => void) | null {
-    return this._onclick
-  }
-
-
 
   render() {
     return html`
