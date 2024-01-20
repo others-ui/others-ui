@@ -12,7 +12,6 @@ async function getPkgVersion() {
 }
 
 async function run() {
-  await execa('git', ['clean', '-fdx'], { stdio: 'inherit' })
   await execa('pnpm', ['i'], { stdio: 'inherit' })
   await execa('pnpm', ['build'], { stdio: 'inherit' })
   await execa('pnpm', ['run', 'lint'], { stdio: 'inherit' })
