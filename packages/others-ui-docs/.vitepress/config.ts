@@ -39,6 +39,7 @@ export default defineConfig({
           { text: 'Checkbox', link: '/components/checkbox' },
           { text: 'Form', link: '/components/form' },
           { text: 'Select', link: '/components/select' },
+<<<<<<< HEAD
           {
             text: '其他组件',
             collapsed: false,
@@ -46,6 +47,9 @@ export default defineConfig({
               { text: 'Transition', link: '/components/transition' },
             ]
           }
+=======
+          { text: 'Radio', link: '/docs/radio' },
+>>>>>>> 146ac30 (feat: 新增radio基本样式)
         ]
       }
     ],
