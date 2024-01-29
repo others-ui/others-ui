@@ -1,4 +1,5 @@
 import { defineConfig } from 'vitepress'
+import { version } from '../../others-ui/package.json'
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
@@ -10,14 +11,21 @@ export default defineConfig({
     nav: [
       { text: '引导', link: '/docs/before-start' },
       { text: '文档', link: '/docs/guide' },
-      { text: '关于我们', link: '/about' }
+      {
+        text: version,
+        items: [
+          { text: '更新日志', link: 'https://github.com/others-ui/others-ui/blob/dev/packages/others-ui/CHANGELOG.md' },
+          { text: 'npm', link: 'https://www.npmjs.com/package/others-ui' },
+        ]
+      },
+      { text: '关于我们', link: '/about' },
     ],
 
     sidebar: [
       {
-        text: 'How to use',
+        text: '开始指南',
         items: [
-          { text: '准备工作', link: '/docs/before-start' },
+          { text: '简介', link: '/docs/before-start' },
           { text: '快速开始', link: '/docs/guide' }
         ]
       },
