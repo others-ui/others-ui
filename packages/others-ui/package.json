@@ -18,11 +18,21 @@
     },
     "./others-ui.css": "./dist/others-ui.css"
   },
-  "keywords": [
-    "others-ui"
-  ],
   "author": "yanyunwu",
   "license": "MIT",
+  "homepage": "https://others-ui.github.io/others-ui",
+  "keywords": [
+    "others-ui",
+    "web-components",
+    "lit",
+    "组件库",
+    "components"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/others-ui/others-ui",
+    "directory": "packages/others-ui"
+  },
   "publishConfig": {
     "access": "public",
     "registry": "https://registry.npmjs.org/"
