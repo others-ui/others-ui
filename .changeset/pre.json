@@ -1,0 +1,9 @@
+{
+  "mode": "pre",
+  "tag": "alpha",
+  "initialVersions": {
+    "others-ui": "0.0.7",
+    "others-ui-docs": "0.0.3"
+  },
+  "changesets": []
+}
