@@ -17,6 +17,13 @@ pnpm dev
 4. 开发完成后提交到远程向main发起pr
 5. 后续等项目发布第一版再完善
 
+## 单测编写
+
+1. render 渲染测试
+2. events 事件测试
+3. props 属性测试
+4. others 其他测试
+
 ## Credits
 
 Git commit message compliance [Angular](https://docs.google.com/document/d/1QrDFcIiPjSLDn3EL15IJygNPiHORgU1_OOAqWjiDU5Y/edit#)
