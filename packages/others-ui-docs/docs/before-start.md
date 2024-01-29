@@ -1,23 +1,9 @@
-# 准备工作
+# 什么是OthersUI?
+OthersUI 是一个基于[web-components](https://developer.mozilla.org/en-US/docs/Web/API/Web_components)的通用组件库，相比于传统的组件有天然的浏览器环境支持，能够跨框架使用，不管是纯html还是`react`、`vue`。
 
-`npm i others-ui`
-
-|  组件  | 是否开发 |
-|  ----  | ----  |
-| button  | 是 |
-| switch  | 是 |
-| input  | 是 |
-| form  | 是 |
-| checkbox  | 是 |
-| radio  | 否 |
-| select  | 否 |
-| slider  | 否 |
-| avatar  | 否 |
-| alert  | 否 |
-| drawer  | 否 |
-| message  | 否 |
-| modal  | 否 |
-
+::: tip 快速了解
+迫不及待体验？跳转到[快速开始](/docs/guide)。
+:::
 
 
 

@@ -2,135 +2,65 @@
 outline: deep
 ---
 
-# Runtime API Examples
+# 快速开始
 
-This page demonstrates usage of some of the runtime APIs provided by VitePress.
+## 安装
 
-The main `useData()` API can be used to access site, theme, and page data for the current page. It works in both `.md` and `.vue` files:
+### 浏览器环境
 
-```md
-<script setup>
-import { useData } from 'vitepress'
+导出**umd**格式的js、css文件, 直接在html内引用即可
 
-const { theme, page, frontmatter } = useData()
-</script>
-
-## Results
-
-### Theme Data
-<pre>{{ theme }}</pre>
-
-### Page Data
-<pre>{{ page }}</pre>
-
-### Page Frontmatter
-<pre>{{ frontmatter }}</pre>
+```html
+<!-- 引用js文件 -->
+<script src="https://cdn.jsdelivr.net/npm/others-ui@latest/dist/others-ui.umd.js"></script>
+<!-- 引用css文件 -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/others-ui@latest/dist/others-ui.css">
 ```
 
-<script setup>
-import { useData } from 'vitepress'
-
-const { site, theme, page, frontmatter } = useData()
-</script>
-
-## Results
-
-### Theme Data
-<pre>{{ theme }}</pre>
-
-### Page Data
-<pre>{{ page }}</pre>
-
-### Page Frontmatter
-<pre>{{ frontmatter }}</pre>
-
-## More
-
-Check out the documentation for the [full list of runtime APIs](https://vitepress.dev/reference/runtime-api#usedata).
-
-# Markdown Extension Examples
-
-This page demonstrates some of the built-in markdown extensions provided by VitePress.
-
-## Syntax Highlighting
-
-VitePress provides Syntax Highlighting powered by [Shiki](https://github.com/shikijs/shiki), with additional features like line-highlighting:
-
-**Input**
-
-````
-```js{4}
-export default {
-  data () {
-    return {
-      msg: 'Highlighted!'
-    }
-  }
-}
+#### example
+::: details 点我查看代码
+```html {10}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>example</title>
+  <script src="https://cdn.jsdelivr.net/npm/others-ui@latest/dist/others-ui.umd.js"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/others-ui@latest/dist/others-ui.css">
+  <script>
+    OthersUI.register()
+  </script>
+</head>
+<body>
+  <ot-button type="primary" block>这是一个可以直接渲染在浏览器的按钮</ot-button>
+</body>
+</html>
 ```
-````
+:::
 
-**Output**
+#### 效果
+<ot-button type="primary" block>这是一个可以直接渲染在浏览器的按钮</ot-button>
 
-```js{4}
-export default {
-  data () {
-    return {
-      msg: 'Highlighted!'
-    }
-  }
-}
+::: warning 注意
+umd会导出一个全局对象`OthersUI`, 在使用组件前必须调用`OthersUI.register()`去注册组件
+:::
+
+### node环境
+::: code-group
+```sh [npm]
+npm i others-ui
 ```
 
-## Custom Containers
+```sh [pnpm]
+pnpm i others-ui
+```
 
-**Input**
-
-```md
-::: info
-This is an info box.
+```sh [yarn]
+yarn add others-ui
+```
 :::
 
 ::: tip
-This is a tip.
+作者只用过这几个, 其他包管理工具自行探索😂
 :::
-
-::: warning
-This is a warning.
-:::
-
-::: danger
-This is a dangerous warning.
-:::
-
-::: details
-This is a details block.
-:::
-```
-
-**Output**
-
-::: info
-This is an info box.
-:::
-
-::: tip
-This is a tip.
-:::
-
-::: warning
-This is a warning.
-:::
-
-::: danger
-This is a dangerous warning.
-:::
-
-::: details
-This is a details block.
-:::
-
-## More
-
-Check out the documentation for the [full list of markdown extensions](https://vitepress.dev/guide/markdown).
-
