@@ -39,6 +39,10 @@ export class CheckboxGroup<T> extends FormItemMixin<typeof BaseElement, unknown[
       value: this._value,
       setValue: (value: T[]) => {
         this.onChange(value)
+        this.checkboxGroupContext = {
+          ...this.checkboxGroupContext!,
+          value: [...value]
+        }
       },
     }
   }
@@ -62,10 +66,6 @@ export class CheckboxGroup<T> extends FormItemMixin<typeof BaseElement, unknown[
       formItemContext: () => {
         log('formItemContext')
         this._value = [...this.formItemValue as T[] || []]
-      },
-      _value: () => {
-        log('_value change')
-        this.setValue(this._value ?? [])
       },
       value: () => {
         this._value = [...this.value || []]
