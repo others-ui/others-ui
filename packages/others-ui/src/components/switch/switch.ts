@@ -33,9 +33,7 @@ export class Switch extends FormItemMixin<typeof BaseElement, boolean>(BaseEleme
     this.formItemValue = input.checked
   }
 
-  protected willUpdate(
-    state: PropertyValueMap<SwitchProps & { _value: string, formItemContext: FormItemContextValue<boolean> }>
-  ) {
+  protected willUpdate( state: PropertyValueMap<SwitchProps & { _value: string, formItemContext: FormItemContextValue<boolean> }>) {
     watch(state, {
       value: () => {
         this._value = this.value
