@@ -2,11 +2,11 @@ ORIGIN="origin"
 RELEASE_BRANCH=`git symbolic-ref --short -q HEAD`
 
 verify_release_branch() {
-  if [[ $RELEASE_BRANCH == main ]]
+  if [[ $RELEASE_BRANCH == release ]]
   then
     echo "当前处于 $RELEASE_BRANCH 分支"
   else
-    echo "只能在 main 分支执行发布"
+    echo "只能在 release 分支执行发布"
   fi
 }
 

@@ -10,7 +10,7 @@ export interface ButtonProps {
   block?: boolean
   disabled?: boolean
   loading?: boolean
-  // 联动表单
+  // 联动表单 后续规划
   submit?: boolean
 }
 
@@ -22,7 +22,7 @@ export class Button extends BaseElement implements ButtonProps {
   public type: ButtonProps['type']
 
   @property({type: String, reflect: true})
-  public size: ButtonProps['size'] = 'middle'
+  public size: ButtonProps['size']
 
   @property({type: Boolean, reflect: true})
   public block: boolean = false
