@@ -13,7 +13,7 @@ export interface CheckboxProps<T> {
 }
 
 
-export class Checkbox<T> extends BaseElement implements CheckboxProps<T> {
+export class Checkbox<T = unknown> extends BaseElement implements CheckboxProps<T> {
   static componentName = 'checkbox'
   static styles = css`${unsafeCSS(styles)}`
 
@@ -52,10 +52,6 @@ export class Checkbox<T> extends BaseElement implements CheckboxProps<T> {
   }
 
   protected willUpdate(state: PropertyValueMap<CheckboxProps<T> & { checkboxGroupContext: CheckboxGroupContextValue<T> }>) {
-    if (state.has('checked')) {
-      this.isChecked = this.checked
-    }
-
     watch(state, {
       checkboxGroupContext: () => {
         if (this.value !== undefined) {
@@ -65,6 +61,9 @@ export class Checkbox<T> extends BaseElement implements CheckboxProps<T> {
             this.isChecked = false
           }
         }
+      },
+      checked: () => {
+        this.isChecked = this.checked
       }
     })
   }

@@ -35,7 +35,6 @@ function getPlugins(name, format) {
       inject: false,
       extract: false,
       include: /components/,
-
     })
   )
   // cjs | esm
