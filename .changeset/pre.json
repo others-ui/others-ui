@@ -5,5 +5,7 @@
     "others-ui": "0.0.7",
     "others-ui-docs": "0.0.3"
   },
-  "changesets": []
+  "changesets": [
+    "clean-pears-fry"
+  ]
 }

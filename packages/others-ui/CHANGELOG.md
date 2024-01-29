@@ -1,5 +1,11 @@
 # others
 
+## 0.0.8-alpha.0
+
+### Patch Changes
+
+- 9b3bc07: 更新 checkbox 单测
+
 ## 0.0.7
 
 ### Patch Changes

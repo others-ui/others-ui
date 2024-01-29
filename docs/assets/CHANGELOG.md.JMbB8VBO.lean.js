@@ -1,0 +1,1 @@
+import{_ as a,c as e,o as t,V as h}from"./chunks/framework.ssyQMsw3.js";const b=JSON.parse('{"title":"others-ui-docs","description":"","frontmatter":{},"headers":[],"relativePath":"CHANGELOG.md","filePath":"CHANGELOG.md"}'),l={name:"CHANGELOG.md"},i=h("",10),o=[i];function s(r,c,n,d,u,_){return t(),e("div",null,o)}const P=a(l,[["render",s]]);export{b as __pageData,P as default};
