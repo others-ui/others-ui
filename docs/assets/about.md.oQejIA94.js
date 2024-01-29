@@ -1,1 +1,0 @@
-import{_ as t,c as e,o as a,m as o}from"./chunks/framework.KawmwmWz.js";const f=JSON.parse('{"title":"","description":"","frontmatter":{},"headers":[],"relativePath":"about.md","filePath":"about.md"}'),s={name:"about.md"},n=o("p",null,"yanyunwu",-1),r=[n];function c(_,d,i,p,u,l){return a(),e("div",null,r)}const h=t(s,[["render",c]]);export{f as __pageData,h as default};
