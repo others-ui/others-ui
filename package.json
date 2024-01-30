@@ -25,7 +25,8 @@
     "release": "node ./scripts/release.js",
     "docs:dev": "pnpm --filter others-ui-docs run docs:dev",
     "docs:build": "pnpm --filter others-ui-docs run docs:build",
-    "docs:release": "node ./scripts/build-docs.js"
+    "docs:release": "node ./scripts/build-docs.js",
+    "docs:submodule-push": "sh scripts/submodule.sh"
   },
   "devDependencies": {
     "@babel/core": "^7.22.9",
