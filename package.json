@@ -8,10 +8,6 @@
     "name": "yanyunwu",
     "email": "2480721346@qq.com"
   },
-  "keywords": [
-    "组件库",
-    "components"
-  ],
   "scripts": {
     "prepare": "husky install",
     "lint-staged": "lint-staged",
