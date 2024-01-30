@@ -1,0 +1,51 @@
+@import '../../../common/styles.scss';
+
+:host {
+  display: block;
+}
+
+ul {
+  padding: 0;
+  margin: 0;
+}
+
+
+.select {
+  position: relative;
+  line-height: 50px;
+  width: 200px;
+  text-align: center;
+
+  &-active {
+    border: 1px solid #ccc;
+    border-radius: 10px;
+  }
+
+  &-active, &-list li {
+    width: 200px;
+    height: 50px;
+    background-color: #fff;
+    text-align: center;
+    list-style: none;
+  }
+
+  &-list {
+    position: absolute;
+    top: 50px;
+    height: 0;
+    overflow: hidden;
+    transition: all .5s;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+  }
+
+  &-active:hover {
+    box-shadow: 0px 1px 1px;
+  }
+
+  &-active:hover + &-list,
+  &-list:hover {
+    padding-top: 10px;
+    height: 110px;
+  }
+}

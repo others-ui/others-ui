@@ -13,6 +13,7 @@ export interface FormProps<T extends Record<string, unknown> = Record<string, un
 export class Form<T extends Record<string, unknown> = Record<string, unknown>> extends BaseElement implements FormProps {
   static componentName = 'form'
   static styles = css`${unsafeCSS(styles)}`
+  static expressionProperties: string[] = ['initialValues']
 
   // 初始化的状态
   @property({type: Object, converter: (value) => value && toObject(value)})

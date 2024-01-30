@@ -3,6 +3,7 @@ import { property } from 'lit/decorators.js'
 import styles from './styles/button.scss'
 import { loading } from '../icon/icons/loading'
 import { BaseElement } from '../../common'
+import { EventAgent } from '../../types'
 
 export interface ButtonProps {
   type?: 'primary' | 'success' | 'warn' | 'error',
@@ -17,6 +18,11 @@ export interface ButtonProps {
 export class Button extends BaseElement implements ButtonProps {
   static componentName: string = 'button'
   static styles = css`${unsafeCSS(styles)}`
+  static eventAgent: EventAgent<Button> = {
+    click() {
+      return !(this.loading || this.disabled)
+    }
+  }
 
   @property({type: String, reflect: true})
   public type: ButtonProps['type']
@@ -35,17 +41,6 @@ export class Button extends BaseElement implements ButtonProps {
 
   @property({type: Boolean})
   public submit: boolean = false
-
-  protected eventAgent: Record<string, boolean | ((this: this, e: Event) => boolean)> = {
-    click() {
-      return !(this.loading || this.disabled)
-    }
-  }
-
-  constructor() {
-    super()
-    this.startProxyOnEventListener()
-  }
 
   render() {
     return html`
