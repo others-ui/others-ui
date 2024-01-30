@@ -8,7 +8,7 @@
 
 <div>
   <ot-space direction="vertical">
-    <ot-form ref="form" initialValues='{ "name": "无名" }'>
+    <ot-form ref="form" $initialValues='{ name: "无名" }'>
       <ot-form-item label="姓名" name="name">
         <ot-input></ot-input>
       </ot-form-item>
@@ -36,9 +36,9 @@
 <script>
   const form = document.querySelector('ot-form')
   const button = document.querySelector('ot-button')
-  form.initialValues = {
-    name: "无名"
-  }
+  // form.initialValues = {
+  //   name: "无名"
+  // }
 
   form.addEventListener('submit', (e) => {
     console.log('form submit', e)

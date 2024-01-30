@@ -1,5 +1,7 @@
 import { LitElement } from 'lit'
+import { parseExpression } from '../utils/convert'
 
+export const EXPRESSION_PREFIX = '$'
 export const prefix = process.env.OTHER_PREFIX
 
 export class BaseElement extends LitElement {
@@ -13,6 +15,7 @@ export class BaseElement extends LitElement {
     if (!this.componentName) {
       return
     }
+    this.registerExpressionProperties()
     customElements.define(this.defineName, this)
   }
 
@@ -113,5 +116,33 @@ export class BaseElement extends LitElement {
       },
       get: () => this.onEventMap.get(name)
     })
+  }
+
+
+  // 注册支持表达式的属性
+  static expressionProperties: string[] = []
+  static registerExpressionProperties() {
+    this.expressionProperties.forEach(prop => this.registerExpressionProperty(prop))
+    const connectedCallback = this.prototype.connectedCallback
+    const that = this
+    this.prototype.connectedCallback = function() {
+      that.expressionProperties.forEach(prop => {
+        const self = this as Record<string, any>
+        const ex = self[EXPRESSION_PREFIX + prop]
+        if (typeof ex === 'string' && ex) {
+          self[prop] = parseExpression(ex)
+        }
+      })
+      connectedCallback.call(this)
+    }
+  }
+  static registerExpressionProperty(prop: string) {
+    const exProp = EXPRESSION_PREFIX + prop
+    this.properties = {
+      ...this.properties,
+      [exProp]: {
+        type: String
+      }
+    }
   }
 }

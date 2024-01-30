@@ -25,7 +25,6 @@ export default {
     })
   },
   enhanceApp({ app, router, siteData }) {
-    app.config.compilerOptions.isCustomElement = (tag: string) => tag.startsWith('ot-')
     app.component('demo-preview', AntDesignContainer)
   },
 }

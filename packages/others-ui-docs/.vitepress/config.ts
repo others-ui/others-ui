@@ -37,6 +37,7 @@ export default defineConfig({
           { text: 'Input', link: '/components/input' },
           { text: 'Checkbox', link: '/components/checkbox' },
           { text: 'Form', link: '/components/form' },
+          { text: 'Select', link: '/components/select' },
         ]
       }
     ],
