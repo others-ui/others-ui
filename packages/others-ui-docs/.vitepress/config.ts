@@ -14,7 +14,7 @@ export default defineConfig({
       {
         text: version,
         items: [
-          { text: '更新日志', link: 'https://github.com/others-ui/others-ui/blob/dev/packages/others-ui/CHANGELOG.md' },
+          { text: '更新日志', link: 'https://github.com/others-ui/others-ui/blob/main/packages/others-ui/CHANGELOG.md' },
           { text: 'npm', link: 'https://www.npmjs.com/package/others-ui' },
         ]
       },

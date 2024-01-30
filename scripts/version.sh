@@ -18,8 +18,6 @@ verify_local_clean() {
 bump_version() {
   npx changeset version
   echo "更新 changelog 成功!"
-  pnpm run docs:release
-  echo "文档更新成功!"
 }
 
 push() {

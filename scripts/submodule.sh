@@ -2,6 +2,9 @@ ORIGIN="origin"
 RELEASE_BRANCH="main"
 
 cd ./docs
+git stash
+git checkout main
+git stash pop
 git add .
 git commit -m "docs update"
 git push origin $RELEASE_BRANCH -f
