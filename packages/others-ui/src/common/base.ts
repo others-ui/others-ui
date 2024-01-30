@@ -1,5 +1,6 @@
 import { LitElement } from 'lit'
 import { parseExpression } from '../utils/convert'
+import { EventAgent } from '../types'
 
 export const EXPRESSION_PREFIX = '$'
 export const prefix = process.env.OTHER_PREFIX
@@ -15,6 +16,7 @@ export class BaseElement extends LitElement {
     if (!this.componentName) {
       return
     }
+    this.registerEventAgent()
     this.registerExpressionProperties()
     customElements.define(this.defineName, this)
   }
@@ -26,15 +28,22 @@ export class BaseElement extends LitElement {
   }
 
 
-
   // 代理事件封装
-  protected eventAgent: Record<keyof HTMLElementEventMap, ((this: this, e: Event) => boolean) | boolean>
+  static eventAgent: EventAgent<any> = {}
+  private eventAgent: EventAgent<any> = {}
+  // 以on事件开头的map
   private onEventMap = new Map<string, (e: Event) => void>
+  // 原始回调和封装回调的映射
   private _eventMap: Map<(e: Event) => void, (e: Event) => void> = new Map()
 
-  constructor() {
-    super()
-    this.eventAgent = {} as Record<keyof HTMLElementEventMap, ((this: this, e: Event) => boolean) | boolean>
+  static registerEventAgent() {
+    const connectedCallback = this.prototype.connectedCallback
+    const that = this
+    this.prototype.connectedCallback = function() {
+      this.eventAgent = that.eventAgent
+      this.startProxyOnEventListener()
+      connectedCallback.call(this)
+    }
   }
 
 
@@ -45,7 +54,7 @@ export class BaseElement extends LitElement {
     options?: boolean | AddEventListenerOptions
   ) {
     // 为lit做兼容
-    if (!this._eventMap) {
+    if (!this._eventMap || !this.eventAgent) {
       super.addEventListener(type, listener, options)
       return listener
     }
@@ -94,8 +103,8 @@ export class BaseElement extends LitElement {
     super.removeEventListener(type, listener, options)
   }
 
-  // 必须要在子类的构造函数启用
-  startProxyOnEventListener() {
+  // 必须要在子类启用
+  private startProxyOnEventListener() {
     for(const type in this.eventAgent) {
       this.addOnEventListener(type as keyof HTMLElementEventMap)
     }
