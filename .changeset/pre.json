@@ -6,6 +6,8 @@
     "others-ui-docs": "0.0.3"
   },
   "changesets": [
-    "clean-pears-fry"
+    "clean-pears-fry",
+    "many-shrimps-fix",
+    "selfish-spies-poke"
   ]
 }

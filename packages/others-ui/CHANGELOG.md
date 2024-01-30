@@ -1,5 +1,12 @@
 # others
 
+## 0.0.8-alpha.1
+
+### Patch Changes
+
+- ca20689: 补充 switch 的单元测试
+- 94de899: 补充 button 的单元测试
+
 ## 0.0.8-alpha.0
 
 ### Patch Changes
