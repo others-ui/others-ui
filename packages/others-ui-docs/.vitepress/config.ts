@@ -9,8 +9,8 @@ export default defineConfig({
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config
     nav: [
-      { text: '引导', link: '/docs/before-start' },
-      { text: '文档', link: '/docs/guide' },
+      { text: '引导', link: '/before-start' },
+      { text: '文档', link: '/guide' },
       {
         text: version,
         items: [
@@ -25,18 +25,18 @@ export default defineConfig({
       {
         text: '开始指南',
         items: [
-          { text: '简介', link: '/docs/before-start' },
-          { text: '快速开始', link: '/docs/guide' }
+          { text: '简介', link: '/before-start' },
+          { text: '快速开始', link: '/guide' }
         ]
       },
       {
         text: '组件',
         items: [
-          { text: 'Button', link: '/docs/button' },
-          { text: 'Switch', link: '/docs/switch' },
-          { text: 'Input', link: '/docs/input' },
-          { text: 'Checkbox', link: '/docs/checkbox' },
-          { text: 'Form', link: '/docs/form' },
+          { text: 'Button', link: '/components/button' },
+          { text: 'Switch', link: '/components/switch' },
+          { text: 'Input', link: '/components/input' },
+          { text: 'Checkbox', link: '/components/checkbox' },
+          { text: 'Form', link: '/components/form' },
         ]
       }
     ],
@@ -55,5 +55,5 @@ export default defineConfig({
       },
     },
   },
-  base: '/others-ui/'
+  base: '/docs/'
 })

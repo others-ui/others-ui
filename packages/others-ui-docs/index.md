@@ -9,10 +9,10 @@ hero:
   actions:
     - theme: brand
       text: 开始使用
-      link: /docs/guide
+      link: /guide
     - theme: alt
       text: 演示案例
-      link: /docs/button
+      link: /components/button
 
 features:
   - title: 轻量
