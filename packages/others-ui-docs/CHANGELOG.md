@@ -1,5 +1,13 @@
 # others-ui-docs
 
+## 0.0.4-alpha.2
+
+### Patch Changes
+
+- Updated dependencies [bf55b3e]
+- Updated dependencies [d24cc24]
+  - others-ui@0.0.8-alpha.2
+
 ## 0.0.4-alpha.1
 
 ### Patch Changes
