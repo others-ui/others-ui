@@ -11,46 +11,50 @@ import {
   ref,
   createRef,
   Ref,
-  classMap
+  classMap,
+  nothing
 } from '@others-ui/common'
 import styles from './styles/select.scss'
 import { watch } from '../../utils/watch'
+import { onCssFocusAndBlur } from '../../utils/events'
 
-export interface SelectOptions {
+export interface SelectOption<T> {
   label?: string | TemplateResult<1>,
-  value: string
+  value: T
 }
 
-export interface SelectProps {
-  options: SelectOptions[]
-  value?: string
+export interface SelectProps<T> {
+  options: SelectOption<T>[]
+  value?: T | T[]
   placeholder?: string
 }
 
-export class Select extends BaseElement implements SelectProps {
+export class Select<T> extends BaseElement implements SelectProps<T> {
   static componentName: string = 'select'
   static styles = css`${unsafeCSS(styles)}`
   static expressionProperties: string[] = ['options']
 
   @property({type: Array})
-  public options: SelectProps['options'] = []
+  public options: SelectProps<T>['options'] = []
 
   @property({type: String})
-  public value?: string
+  public value?: T | T[]
 
   @property({type: String})
   public placeholder?: string
 
   @state()
-  private _value?: string
+  private _value?: T | T[]
 
   @state()
-  private label?: SelectOptions['label']
+  private label?: SelectOption<T>['label']
 
   @state()
   private active: boolean = false
 
   private rootRef: Ref<HTMLDivElement> = createRef<HTMLDivElement>()
+  private inputRef: Ref<HTMLDivElement> = createRef<HTMLDivElement>()
+  private boxRef: Ref<HTMLUListElement> = createRef<HTMLUListElement>()
 
   private get listHeight() {
     return `${this.options.length * 30 + 10}px`
@@ -61,70 +65,78 @@ export class Select extends BaseElement implements SelectProps {
   }
 
   protected firstUpdated() {
-    this.setScopeListHeight(this.listHeight)
-
-    // 模拟active
-    let timer: NodeJS.Timer | null = null
-
-    const startActive = () => {
-      timer = setInterval(() => this.active = !this.active, 500)
-      let fn
-      document.addEventListener('click', fn = () => {
-        this.active = false
-        clearInterval(timer!)
-        timer = null
-        document.removeEventListener('click', fn!)
-      })
-    }
-
-    this.rootRef.value?.addEventListener('click', (e) => {
-      if (!timer) {
-        startActive()
-      }
-      e.stopPropagation()
-    })
-  }
-
-  onItemClick(option: SelectOptions) {
-    this.label = option.label ?? option.value
-    this._value = option.value
-    this.emit('change', this._value)
     this.setScopeListHeight('0')
 
-    setTimeout(() => {
-      this.setScopeListHeight(this.listHeight)
-    }, 300)
+    if (this.inputRef.value) {
+      onCssFocusAndBlur(this.inputRef.value, {
+        onFocus: () => {
+          if (this.active) {
+            const fn = (e: TransitionEvent) => {
+              if (e.propertyName === 'height') {
+                this.active = false
+                this.boxRef.value?.removeEventListener('transitionend', fn)
+              }
+            }
+            this.boxRef.value?.addEventListener('transitionend', fn)
+            this.setScopeListHeight('0')
+            return
+          }
+
+          this.active = true
+          setTimeout(() => this.setScopeListHeight(this.listHeight))
+        },
+        onBlur: () => {
+          const fn = (e: TransitionEvent) => {
+            if (e.propertyName === 'height') {
+              this.active = false
+              this.boxRef.value?.removeEventListener('transitionend', fn)
+            }
+          }
+          this.boxRef.value?.addEventListener('transitionend', fn)
+          this.setScopeListHeight('0')
+        }
+      })
+    }
   }
 
-  protected willUpdate(state: PropertyValueMap<SelectOptions>) {
+  onItemClick(option: SelectOption<T>) {
+    this.label = option.label ?? (typeof option.value === 'string' ? option.value : undefined)
+    this._value = option.value
+    this.emit('change', this._value)
+  }
+
+  protected willUpdate(state: PropertyValueMap<SelectProps<T>>) {
     watch(state, {
       value: (val) => this._value = val
     })
   }
 
   render() {
+    const renderSelectItem = (option: SelectOption<T>) => {
+      return  html`<li class=${classMap({selected: this._value === option.value})} @click=${() => this.onItemClick(option)}>${option.label ?? option.value}</li>`
+    }
+
     return html`
     <div
       class="select"
       ${ref(this.rootRef)}
     >
-      <div class="select-active-label" @click=${() => this.active = true}>
+      <div
+        ${ref(this.inputRef)}
+        class=${classMap({'select-active-label': true,'select-active-label-hover': this.active })}
+      >
         <div
           class=${classMap({ 'placeholder-color': !this.label, active: this.active })}
         >
           ${ifDefined(this.label || this.placeholder)}
         </div>
       </div>
-      <div class="select-list">
-        <ul class="select-list-box">
-          ${this.options.map((option) => renderSelectItem.call(this, option))}
+      ${this.active ? html`<div class='select-list'>
+        <ul ${ref(this.boxRef)} class=${classMap({'select-list-box': true, 'select-list-box-hover': this.active})}>
+          ${this.options.map((option) => renderSelectItem(option))}
         </ul>
-      </div>
+      </div>` : nothing}
     </div>
     `
   }
-}
-
-function renderSelectItem(this: Select, option: SelectOptions) {
-  return  html`<li @click=${() => this.onItemClick(option)}>${option.label ?? option.value}</li>`
 }
