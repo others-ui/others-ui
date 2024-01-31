@@ -1,6 +1,6 @@
 {
   "name": "@others-ui/common",
-  "version": "0.0.8-alpha.1",
+  "version": "0.0.8-alpha.2",
   "description": "others-ui公共依赖",
   "main": "./index.js",
   "module": "./dist/common.esm.js",

@@ -1,5 +1,14 @@
 # others
 
+## 0.0.8-alpha.2
+
+### Patch Changes
+
+- bf55b3e: 导出公共依赖
+- d24cc24: 新增 select 组件
+- Updated dependencies [bf55b3e]
+  - @others-ui/common@0.0.8-alpha.2
+
 ## 0.0.8-alpha.1
 
 ### Patch Changes

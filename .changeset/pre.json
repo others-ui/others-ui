@@ -3,11 +3,14 @@
   "tag": "alpha",
   "initialVersions": {
     "others-ui": "0.0.7",
-    "others-ui-docs": "0.0.3"
+    "others-ui-docs": "0.0.3",
+    "@others-ui/common": "0.0.8-alpha.1"
   },
   "changesets": [
     "clean-pears-fry",
     "many-shrimps-fix",
-    "selfish-spies-poke"
+    "metal-crabs-hunt",
+    "selfish-spies-poke",
+    "strong-feet-hide"
   ]
 }
