@@ -1,23 +1,10 @@
 {
-  "name": "others-ui",
+  "name": "@others-ui/common",
   "version": "0.0.8-alpha.1",
-  "description": "others-ui",
+  "description": "others-ui公共依赖",
   "main": "./index.js",
-  "module": "./dist/others-ui.esm.js",
+  "module": "./dist/common.esm.js",
   "types": "./dist/types/index.d.ts",
-  "exports": {
-    ".": {
-      "import": {
-        "types": "./dist/types/index.d.ts",
-        "default": "./dist/others-ui.esm.js"
-      },
-      "require": {
-        "types": "./dist/types/index.d.ts",
-        "default": "./index.js"
-      }
-    },
-    "./others-ui.css": "./dist/others-ui.css"
-  },
   "author": "yanyunwu",
   "license": "MIT",
   "homepage": "https://others-ui.github.io/docs",
@@ -37,7 +24,8 @@
     "access": "public",
     "registry": "https://registry.npmjs.org/"
   },
-  "dependencies": {
-    "@others-ui/common": "workspace:*"
+  "peerDependencies": {
+    "@lit/context": "^1.1.0",
+    "lit": "^3.1.1"
   }
 }

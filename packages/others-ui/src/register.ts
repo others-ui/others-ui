@@ -1,4 +1,4 @@
-import type { BaseElement } from './common'
+import type { BaseElement } from '@others-ui/common'
 import * as components from './components'
 
 const c = components as Record<string, typeof BaseElement>

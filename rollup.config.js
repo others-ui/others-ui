@@ -3,16 +3,36 @@ import resolve from '@rollup/plugin-node-resolve'
 import postcss from 'rollup-plugin-postcss'
 import replace from '@rollup/plugin-replace'
 import terser from '@rollup/plugin-terser'
-import babel from 'rollup-plugin-babel'
 import commonjs from '@rollup/plugin-commonjs'
 import path from 'node:path'
 
 const __PROD__ = process.env.BUILD === 'production'
 const __PREFIX__ = 'ot'
+const __UMD_GLOBAL_COMMON_NAME__ = 'OthersUICommon'
 const __UMD_GLOBAL_NAME__ = 'OthersUI'
 const pkg = [
+  'common',
   'others-ui'
 ]
+const mode = [
+  'cjs',
+  'esm',
+  // 嵌入lit
+  'umd',
+  // 不嵌入lit
+  'umd-alone',
+]
+const global_name_map = {
+  common: __UMD_GLOBAL_COMMON_NAME__,
+  'others-ui': __UMD_GLOBAL_NAME__
+}
+
+const format_map = {
+  cjs: 'cjs',
+  esm: 'esm',
+  umd: 'umd',
+  'umd-alone': 'umd',
+}
 
 /**
  * 根据包名和不同打包格式决定插件
@@ -38,7 +58,7 @@ function getPlugins(name, format) {
     })
   )
   // cjs | esm
-  if (['umd'].includes(format)) {
+  if (['umd', 'umd-alone', 'lit'].includes(format)) {
     plugins.push(
       commonjs(),
       resolve(),
@@ -58,16 +78,6 @@ function getPlugins(name, format) {
     }),
   )
 
-  if (['others-ui-react'].includes(name)) {
-    plugins.push(
-      babel({
-        exclude: 'node_modules/**',
-        extensions: ['.js', '.jsx', '.ts', '.tsx'],
-        presets: ['@babel/preset-env','@babel/preset-react'],
-      })
-    )
-  }
-
   return plugins
 }
 
@@ -78,13 +88,20 @@ function getRollupConfig(name, format) {
   pkgConfig.input =  `./packages/${name}/src/index.ts`
   pkgConfig.output = {
     file: `./packages/${name}/dist/${name}.${format}.js`,
-    format: format,
+    format: format_map[format],
     sourcemap: true,
   }
 
-  if (['umd'].includes(format)) {
+  if (['umd', 'umd-alone'].includes(format)) {
     pkgConfig.input =  `./packages/${name}/src/index.umd.ts`
-    pkgConfig.output.name = __UMD_GLOBAL_NAME__
+    pkgConfig.output.name = global_name_map[name]
+  }
+
+  if (['umd-alone'].includes(format)) {
+    pkgConfig.external = ['@others-ui/common']
+    pkgConfig.output.globals = {
+      '@others-ui/common': __UMD_GLOBAL_COMMON_NAME__
+    }
   }
 
   if(['cjs'].includes(format)) {
@@ -113,8 +130,12 @@ function getRollupConfig(name, format) {
 const rollupConfig = []
 
 pkg.forEach(name => {
+  let useMode = [...mode]
+  if (name === 'common' || !__PROD__) {
+    useMode = useMode.filter(m => m !== 'umd-alone')
+  }
   rollupConfig.push(
-    ...['cjs', 'esm', 'umd'].map(format => getRollupConfig(name, format))
+    ...useMode.map(format => getRollupConfig(name, format))
   )
 })
 

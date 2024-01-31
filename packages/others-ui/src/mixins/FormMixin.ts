@@ -1,6 +1,6 @@
-import { LitElement } from 'lit'
-import { consume } from '@lit/context'
-import { property } from 'lit/decorators.js'
+import { LitElement } from '@others-ui/common'
+import { consume } from '@others-ui/common'
+import { property } from '@others-ui/common'
 import { FormItemContextValue, getFormItemContext } from '../context/FormItemContext'
 import { Constructor } from '../types'
 

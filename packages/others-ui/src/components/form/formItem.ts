@@ -1,8 +1,8 @@
-import { PropertyValueMap, css, html, unsafeCSS } from 'lit'
+import { PropertyValueMap, css, html, unsafeCSS } from '@others-ui/common'
 import styles from './styles/form-item.scss'
-import { BaseElement } from '../../common'
-import { property } from 'lit/decorators.js'
-import { consume, provide } from '@lit/context'
+import { BaseElement } from '@others-ui/common'
+import { property } from '@others-ui/common'
+import { consume, provide } from '@others-ui/common'
 import { FormContext, FormContextValue } from '../../context/FormContext'
 import { FormItemContext, FormItemContextValue } from '../../context/FormItemContext'
 

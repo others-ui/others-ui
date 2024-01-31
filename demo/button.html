@@ -1,4 +1,6 @@
-<script src="../packages/others-ui/dist/others-ui.umd.js"></script>
+<script src="../packages/common/dist/common.umd.js"></script>
+<script src="../packages/others-ui/dist/others-ui.umd-alone.js"></script>
+<!-- <script src="../packages/others-ui/dist/others-ui.umd.js"></script> -->
 <link rel="stylesheet" href="../packages/others-ui/dist/others-ui.css">
 
 <style>
@@ -6,6 +8,7 @@
     background-color: red;
   }
 </style>
+
 
 <script>
   OthersUI.register()
@@ -42,7 +45,7 @@
   console.dir(button)
 
   button.onclick = null
-  button.removeEventListener('click', fn)
+  // button.removeEventListener('click', fn)
 
   console.log('button.onclick', button.onclick)
 </script>

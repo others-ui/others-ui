@@ -1,6 +1,6 @@
-import { LitElement } from 'lit'
-import { parseExpression } from '../utils/convert'
-import { EventAgent } from '../types'
+import { LitElement } from './lit'
+import { parseExpression } from './utils'
+import { EventAgent } from './types'
 
 export const EXPRESSION_PREFIX = '$'
 export const prefix = process.env.OTHER_PREFIX

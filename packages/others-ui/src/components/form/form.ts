@@ -1,9 +1,9 @@
-import { PropertyValueMap, css, html, unsafeCSS } from 'lit'
-import { provide } from '@lit/context'
+import { PropertyValueMap, css, html, unsafeCSS } from '@others-ui/common'
+import { provide } from '@others-ui/common'
 import { FormContext, FormContextValue } from '../../context/FormContext'
 import styles from './styles/form.scss'
-import { BaseElement } from '../../common'
-import { property, state } from 'lit/decorators.js'
+import { BaseElement } from '@others-ui/common'
+import { property, state } from '@others-ui/common'
 import { toObject } from '../../utils/convert'
 export interface FormProps<T extends Record<string, unknown> = Record<string, unknown>> {
   initialValues?: T

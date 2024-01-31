@@ -1,7 +1,7 @@
-import { css, html, unsafeCSS } from 'lit'
-import { property } from 'lit/decorators.js'
+import { css, html, unsafeCSS } from '@others-ui/common'
+import { property } from '@others-ui/common'
 import styles from './styles.scss'
-import { BaseElement } from '../../common'
+import { BaseElement } from '@others-ui/common'
 
 export interface SpaceProps {
   direction?: 'vertical' | 'horizontal'

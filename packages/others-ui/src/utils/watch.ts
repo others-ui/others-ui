@@ -1,4 +1,4 @@
-import { PropertyValueMap } from 'lit'
+import { PropertyValueMap } from '@others-ui/common'
 
 type WatchHandler<T extends Record<string, any>> = {
   [K in keyof T]?: (oldValue: T[K]) => void
