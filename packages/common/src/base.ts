@@ -1,4 +1,4 @@
-import { LitElement } from './lit'
+import { LitElement, html } from './lit'
 import { parseExpression } from './utils'
 import { EventAgent } from './types'
 
@@ -139,7 +139,7 @@ export class BaseElement extends LitElement {
         const self = this as Record<string, any>
         const ex = self[EXPRESSION_PREFIX + prop]
         if (typeof ex === 'string' && ex) {
-          self[prop] = parseExpression(ex)
+          self[prop] = parseExpression(ex, { html })
         }
       })
       connectedCallback.call(this)

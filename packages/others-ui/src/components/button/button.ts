@@ -5,7 +5,7 @@ import {
   unsafeCSS,
   property,
   BaseElement,
-  EventAgent
+  EventAgent,
 } from '@others-ui/common'
 import styles from './styles/button.scss'
 import { loading } from '../icon/icons/loading'

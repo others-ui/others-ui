@@ -20,3 +20,5 @@ export * from './register'
 
 // 组件
 export * from './components'
+
+export { html } from '@others-ui/common'

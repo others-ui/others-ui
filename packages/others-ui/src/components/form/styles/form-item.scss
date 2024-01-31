@@ -18,7 +18,7 @@
   .wrapper {
     flex: 1;
     ::slotted(*) {
-      vertical-align: top;
+      vertical-align: middle;
     }
   }
 }
