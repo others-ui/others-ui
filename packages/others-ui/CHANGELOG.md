@@ -1,5 +1,17 @@
 # others
 
+## 0.0.8
+
+### Patch Changes
+
+- 1fc051c: 更新 checkbox 单测
+- ca20689: 补充 switch 的单元测试
+- bf55b3e: 导出公共依赖
+- 94de899: 补充 button 的单元测试
+- d24cc24: 新增 select 组件
+- Updated dependencies [bf55b3e]
+  - @others-ui/common@0.0.8
+
 ## 0.0.8-alpha.2
 
 ### Patch Changes
