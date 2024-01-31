@@ -18,7 +18,10 @@ export class BaseElement extends LitElement {
     }
     this.registerEventAgent()
     this.registerExpressionProperties()
-    customElements.define(this.defineName, this)
+
+    if (!customElements.get(this.defineName)) {
+      customElements.define(this.defineName, this)
+    }
   }
 
   protected emit<T = any>(event: string, detail: T) {
