@@ -1,8 +1,8 @@
-import { css, html, unsafeCSS } from 'lit'
-import { property, state } from 'lit/decorators.js'
+import { css, html, unsafeCSS } from '@others-ui/common'
+import { property, state } from '@others-ui/common'
 import styles from './styles/select.scss'
-import { BaseElement } from '../../common'
-import { ifDefined } from 'lit/directives/if-defined.js'
+import { BaseElement } from '@others-ui/common'
+import { ifDefined } from '@others-ui/common'
 
 export interface SelectOptions {
   label?: string,

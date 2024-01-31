@@ -1,4 +1,4 @@
-import { Context, createContext } from '@lit/context'
+import { Context, createContext } from '@others-ui/common'
 
 export interface  CheckboxGroupContextValue<T = unknown> {
   value?: T[]

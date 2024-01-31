@@ -1,9 +1,14 @@
-import { css, html, nothing, unsafeCSS } from 'lit'
-import { property } from 'lit/decorators.js'
+import {
+  css,
+  html,
+  nothing,
+  unsafeCSS,
+  property,
+  BaseElement,
+  EventAgent
+} from '@others-ui/common'
 import styles from './styles/button.scss'
 import { loading } from '../icon/icons/loading'
-import { BaseElement } from '../../common'
-import { EventAgent } from '../../types'
 
 export interface ButtonProps {
   type?: 'primary' | 'success' | 'warn' | 'error',

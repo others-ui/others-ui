@@ -1,8 +1,8 @@
-import { PropertyValueMap, css, html, unsafeCSS } from 'lit'
-import { property, state } from 'lit/decorators.js'
-import { BaseElement } from '../../common'
+import { PropertyValueMap, css, html, unsafeCSS } from '@others-ui/common'
+import { property, state } from '@others-ui/common'
+import { BaseElement } from '@others-ui/common'
 import styles from './styles/checkbox.scss'
-import { consume } from '@lit/context'
+import { consume } from '@others-ui/common'
 import { CheckboxGroupContext, CheckboxGroupContextType, CheckboxGroupContextValue } from './GroupContext'
 import { watch } from '../../utils/watch'
 

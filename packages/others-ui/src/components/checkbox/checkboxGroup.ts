@@ -1,12 +1,12 @@
-import { PropertyValueMap, css, html, unsafeCSS } from 'lit'
-import { property, state } from 'lit/decorators.js'
-import { provide } from '@lit/context'
+import { PropertyValueMap, css, html, unsafeCSS } from '@others-ui/common'
+import { property, state } from '@others-ui/common'
+import { provide } from '@others-ui/common'
 import {
   CheckboxGroupContext,
   CheckboxGroupContextType,
   CheckboxGroupContextValue
 } from './GroupContext'
-import { BaseElement } from '../../common'
+import { BaseElement } from '@others-ui/common'
 import styles from './styles/checkbox-group.scss'
 import { watch } from '../../utils/watch'
 import { FormItemMixin } from '../../mixins/FormMixin'
