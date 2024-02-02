@@ -46,6 +46,15 @@ const members = [
       { icon: 'twitter', link: '#' }
     ]
   },
+  {
+    avatar: 'https://github.com/jzhmcoo1.png',
+    name: 'jzhmcoo1',
+    title: 'Contributor',
+    links: [
+      { icon: 'github', link: 'https://github.com/jzhmcoo1' },
+      { icon: 'twitter', link: '#' }
+    ]
+  }
 ]
 </script>
 
