@@ -4,29 +4,31 @@
 
 ## 基本使用
 
-<div>
+<!-- <div>
   <ot-space>
       <ot-radio>吃饭</ot-radio>
   </ot-space>
-</div>
+</div> -->
 
 ## 禁用
-
+<!-- 
 <div>
   <ot-space>
       <ot-radio disabled>吃饭</ot-radio>
       <ot-radio disabled>学习</ot-radio>
       <ot-radio disabled>睡觉</ot-radio>
   </ot-space>
-</div>
+</div> -->
 
 ## 单选组合（配合RadioGroup使用）
 
 <div>
   <ot-space>
+  <ot-radio-group> 
       <ot-radio>吃饭</ot-radio>
       <ot-radio>学习</ot-radio>
       <ot-radio>睡觉</ot-radio>
+    </ot-radio-group> 
   </ot-space>
 </div>
 
