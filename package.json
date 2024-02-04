@@ -22,7 +22,8 @@
     "docs:dev": "pnpm --filter others-ui-docs run docs:dev",
     "docs:build": "pnpm --filter others-ui-docs run docs:build",
     "docs:release": "node ./scripts/build-docs.js",
-    "docs:submodule-push": "sh scripts/submodule.sh"
+    "docs:submodule-push": "sh scripts/submodule.sh",
+    "cm": "cz"
   },
   "devDependencies": {
     "@babel/core": "^7.22.9",
@@ -46,6 +47,8 @@
     "@web/dev-server-esbuild": "^0.4.1",
     "@web/test-runner": "^0.17.0",
     "@web/test-runner-puppeteer": "^0.15.0",
+    "commitizen": "^4.3.0",
+    "cz-conventional-changelog": "^3.3.0",
     "eslint": "^8.46.0",
     "execa": "^7.2.0",
     "fs-extra": "^11.2.0",
@@ -66,5 +69,15 @@
     "*.{js,ts}": [
       "eslint"
     ]
+  },
+  "config": {
+    "commitizen": {
+      "path": "cz-conventional-changelog"
+    }
+  },
+  "husky": {
+    "hooks": {
+      "prepare-commit-msg": "exec < /dev/tty && npx cz --hook || true"
+    }
   }
 }
