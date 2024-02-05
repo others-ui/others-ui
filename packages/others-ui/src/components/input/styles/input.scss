@@ -30,5 +30,16 @@
       border-color: var(--#{$g__prefix}-primary-light);
       outline: 0;
     }
+    &:disabled {
+      background-color: #f0f0f0; 
+      cursor: not-allowed; 
+      opacity: 0.6; 
+      border-color: #ddd; 
+      &:hover,
+      &:focus {
+        border-color: #ddd !important;
+        box-shadow: none !important;
+      }
+    }
   }
 }

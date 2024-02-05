@@ -10,6 +10,18 @@
   </ot-space>
 </div>
 
+##  Disabled Input
+
+<br>
+
+<div>
+  <ot-space>
+    <div>
+      <ot-input disabled=true placeholder="请输入......" />
+    </div>
+  </ot-space>
+</div>
+
 <script setup>
   import { ref } from 'vue'
   // const show = ref(false)
