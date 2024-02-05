@@ -41,5 +41,19 @@
         box-shadow: none !important;
       }
     }
+    &.size-small {
+      font-size: 12px;
+      padding: 4px 8px; // 为小型输入框调整字体大小和内边距
+    }
+
+    &.size-medium {
+      font-size: 14px;
+      padding: 8px 10px; // 默认样式
+    }
+
+    &.size-large {
+      font-size: 16px;
+      padding: 12px 14px; // 为大型输入框调整字体大小和内边距
+    }
   }
 }

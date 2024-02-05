@@ -5,7 +5,7 @@
 <div>
   <ot-space>
     <div>
-      <ot-input placeholder="请输入......" />
+      <ot-input placeholder="Basic usage" />
     </div>
   </ot-space>
 </div>
@@ -17,7 +17,22 @@
 <div>
   <ot-space>
     <div>
-      <ot-input disabled=true placeholder="请输入......" />
+      <ot-input disabled=true placeholder="Basic usage" />
+    </div>
+  </ot-space>
+</div>
+
+## Different Sizes
+
+<br>
+<div>
+  <ot-space>
+    <div>
+      <ot-input size="small" placeholder="Basic usage" />
+      <br>
+      <ot-input size="medium" placeholder="Basic usage" />
+      <br>
+      <ot-input size="large" placeholder="Basic usage" />
     </div>
   </ot-space>
 </div>
