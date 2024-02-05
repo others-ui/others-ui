@@ -39,13 +39,14 @@ export default defineConfig({
           { text: 'Checkbox', link: '/components/checkbox' },
           { text: 'Form', link: '/components/form' },
           { text: 'Select', link: '/components/select' },
+          { text: 'Slider', link: '/components/slider' },
           {
             text: '其他组件',
             collapsed: false,
             items: [
               { text: 'Transition', link: '/components/transition' },
             ]
-          }
+          },
         ]
       }
     ],
