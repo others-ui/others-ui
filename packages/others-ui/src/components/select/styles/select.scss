@@ -19,7 +19,7 @@ $selected-color: var(--select-color);
 
 * {
   box-sizing: border-box;
-  transition: all 0.3s ease-in-out;
+  transition: all 0.2s ease-in-out;
 }
 
 ul {
@@ -50,6 +50,7 @@ li {
   }
 
   &-list {
+    opacity: 1;
     top: 32px;
     position: absolute;
     padding-top: 5px;
@@ -57,7 +58,6 @@ li {
     right: 0;
 
     &-box {
-      height: 0;
       overflow: hidden;
       border-radius: $border-radius;
       border: 1px solid transparent;
@@ -76,22 +76,15 @@ li {
           border-radius: $border-radius;
         }
       }
+
+      box-shadow: 0 6px 16px 0 rgba(0, 0, 0, 0.08),
+      0 3px 6px -4px rgba(0, 0, 0, 0.12),
+      0 9px 28px 8px rgba(0, 0, 0, 0.05);
     }
   }
 
 
   &-active-label-hover {
-    border-color: $hover-primary-color;
-  }
-
-  &-list-box-hover {
-    height: var(--scope-list-height);
-    box-shadow: 0 6px 16px 0 rgba(0, 0, 0, 0.08),
-    0 3px 6px -4px rgba(0, 0, 0, 0.12),
-    0 9px 28px 8px rgba(0, 0, 0, 0.05);
-  }
-
-  &:hover &-active-label {
     border-color: $hover-primary-color;
   }
 }
@@ -110,4 +103,8 @@ li {
   font-weight: bold;
   border-radius: $border-radius;
   background-color: $selected-color !important;
+}
+
+.enter-class, .leave-class {
+  opacity: 0;
 }
