@@ -12,6 +12,7 @@ export interface InputProps {
  name?: string
  value?: string
  disabled?: boolean
+ size?: 'small' | 'medium' | 'large'
 }
 
 export class Input extends FormItemMixin<typeof BaseElement, string>(BaseElement) implements InputProps {
@@ -29,6 +30,9 @@ export class Input extends FormItemMixin<typeof BaseElement, string>(BaseElement
 
   @property({type: Boolean})
   public disabled?: boolean = false
+
+  @property({type: String})
+  public size?: 'small' | 'medium' | 'large' = 'medium'
 
   @state()
   public _value?: string
@@ -61,6 +65,7 @@ export class Input extends FormItemMixin<typeof BaseElement, string>(BaseElement
     return html`
       <div class="container">
         <input
+          class=${`size-${this.size}`}
           .placeholder=${ifDefined(this.placeholder)}
           @input=${this.onInput}
           .value=${ifDefined(this._value)}
