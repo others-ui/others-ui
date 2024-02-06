@@ -31,6 +31,7 @@ export default defineConfig({
       },
       {
         text: '组件',
+        collapsed: false,
         items: [
           { text: 'Button', link: '/components/button' },
           { text: 'Switch', link: '/components/switch' },
@@ -38,6 +39,13 @@ export default defineConfig({
           { text: 'Checkbox', link: '/components/checkbox' },
           { text: 'Form', link: '/components/form' },
           { text: 'Select', link: '/components/select' },
+          {
+            text: '其他组件',
+            collapsed: false,
+            items: [
+              { text: 'Transition', link: '/components/transition' },
+            ]
+          }
         ]
       }
     ],
