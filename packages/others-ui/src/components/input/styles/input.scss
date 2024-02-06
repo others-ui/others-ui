@@ -6,6 +6,7 @@
 
 .container {
   display: flex;
+  position: relative;
 
   input {
     outline-style: none;
@@ -43,17 +44,40 @@
     }
     &.size-small {
       font-size: 12px;
-      padding: 4px 8px; // 为小型输入框调整字体大小和内边距
+      padding: 4px 8px; 
     }
 
     &.size-medium {
       font-size: 14px;
-      padding: 8px 10px; // 默认样式
+      padding: 8px 10px; 
     }
 
     &.size-large {
       font-size: 16px;
-      padding: 12px 14px; // 为大型输入框调整字体大小和内边距
+      padding: 12px 14px; 
     }
   }
+  button {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    border: none;
+    background: #f6f6f6;
+    border-radius: 50%;
+    color: grey;
+    cursor: pointer; // 添加鼠标指针变为小手图标
+
+    &:hover { // 鼠标悬停效果
+      background-color: #e0e0e0;
+      color: #333;
+    }
+
+    &:active { // 点击效果
+      background-color: #d0d0d0;
+      box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
+      transform: translateY(-50%) scale(0.98); // 可选：微缩效果，模拟按下的视觉感受
+    }
+  }
+
 }
