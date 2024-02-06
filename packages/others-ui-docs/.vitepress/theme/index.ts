@@ -1,7 +1,7 @@
 // https://vitepress.dev/guide/custom-theme
 import { h, version } from 'vue'
 import Theme from 'vitepress/theme'
-import O, {register} from 'others-ui'
+import OthersUI, { register } from 'others-ui'
 import 'others-ui/others-ui.css'
 import './style.css'
 
@@ -14,8 +14,8 @@ import {
 } from '@vitepress-demo-preview/component'
 import '@vitepress-demo-preview/component/dist/style.css'
 
+console.log('others-ui', OthersUI)
 register()
-console.log('O', O)
 
 export default {
   extends: Theme,

@@ -14,6 +14,8 @@ export type TransitionClassProps = {
 
 export interface TransitionProps extends TransitionClassProps {
   show?: boolean
+  display?: CSSStyleDeclaration['display']
+  name?: string
 }
 
 /**
@@ -29,22 +31,35 @@ export class Transition extends BaseElement implements TransitionProps {
   `
 
   @property({type: Boolean, reflect: true})
-  public show?: boolean = true
+  public show: boolean = true
 
   @property({type: String, reflect: true})
+  public display?: string
+
+  @property({type: String, reflect: true})
+  public name?: string
+
+  @property({type: String})
   public enterClass?: string
 
-  @property({type: String, reflect: true})
+  @property({type: String})
   public showClass?: string
 
-  @property({type: String, reflect: true})
+  @property({type: String})
   public hideClass?: string
 
-  @property({type: String, reflect: true})
+  @property({type: String})
   public leaveClass?: string
 
   private mounted: boolean = false
 
+  private initDisplay?: string
+
+  get _display() {
+    return this.display
+      ? this.display
+      : this.initDisplay
+  }
 
   private onEnter() {
     this.addClass('enterClass')
@@ -59,11 +74,9 @@ export class Transition extends BaseElement implements TransitionProps {
     this.addClass('hideClass')
   }
 
-
   private onLeave() {
     this.addClass('leaveClass')
   }
-
 
   protected willUpdate() {
     if (this.show) {
@@ -72,7 +85,7 @@ export class Transition extends BaseElement implements TransitionProps {
       if (this.mounted) {
         this.runHide()
       } else {
-        this.style.display = 'none'
+        this.hideHostElement()
       }
     }
   }
@@ -81,22 +94,39 @@ export class Transition extends BaseElement implements TransitionProps {
     this.mounted = true
   }
 
-  addClass(name: TransitionClassName) {
-    if (this[name]) {
-      this.classList.add(...this[name]!.split(/\s+/))
+  connectedCallback() {
+    super.connectedCallback()
+    this.initDisplay = getComputedStyle(this).display
+  }
+
+  private addClass(className: TransitionClassName) {
+    if (this[className]) {
+      this.classList.add(...this[className]!.split(/\s+/))
+      return
+    }
+
+    if (this.name) {
+      const newClassName = `${this.name}-${getKebabCase(className)}`
+      this.classList.add(newClassName)
     }
   }
 
-  delClass(name: TransitionClassName) {
-    if (this[name]) {
-      this.classList.remove(...this[name]!.split(/\s+/))
+  private delClass(className: TransitionClassName) {
+    if (this[className]) {
+      this.classList.remove(...this[className]!.split(/\s+/))
+      return
+    }
+
+    if (this.name) {
+      const newClassName = `${this.name}-${getKebabCase(className)}`
+      this.classList.remove(newClassName)
     }
   }
 
-  runShow() {
+  private runShow() {
     runTransition(this, {
       enter: () => {
-        this.style.display = 'block'
+        this.showHostElement()
         this.onEnter()
       },
       run: () => this.onShow(),
@@ -104,19 +134,34 @@ export class Transition extends BaseElement implements TransitionProps {
     })
   }
 
-  runHide() {
+  private runHide() {
     runTransition(this, {
       enter: () => this.onHide(),
       run: () =>  this.onLeave(),
       done: () => {
         this.delClass('hideClass')
         this.delClass('leaveClass')
-        this.style.display = 'none'
+        this.hideHostElement()
       }
     })
+  }
+
+  private showHostElement() {
+    this.style.display = this._display || 'block'
+  }
+
+  private hideHostElement() {
+    this.style.display = 'none'
   }
 
   render() {
     return html`<slot></slot>`
   }
+}
+
+
+function getKebabCase(value: string) {
+  return value.replace(/[A-Z]/g, (item) => {
+    return '-' + item.toLowerCase()
+  })
 }

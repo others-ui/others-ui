@@ -4,9 +4,7 @@
 
 <div>
   <ot-space>
-    <div>
-      <ot-switch :value="show" @change="onChange"/>
-    </div>
+    <div><ot-switch :value="show" @change="onChange"/></div>
     <div>
       <ot-button @click="onClick" type="primary">切换</ot-button>
     </div>
@@ -25,3 +23,5 @@
     show.value = !show.value
   }
 </script>
+
+
