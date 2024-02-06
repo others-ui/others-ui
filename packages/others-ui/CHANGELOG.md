@@ -1,5 +1,14 @@
 # others
 
+## 0.0.9
+
+### Patch Changes
+
+- f7d0386: 新增 transition 组件
+- daf8840: 完善 select 组件
+- Updated dependencies [daf8840]
+  - @others-ui/common@0.0.9
+
 ## 0.0.8
 
 ### Patch Changes

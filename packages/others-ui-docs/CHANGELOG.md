@@ -1,5 +1,14 @@
 # others-ui-docs
 
+## 0.0.5
+
+### Patch Changes
+
+- f7d0386: 新增 transition 组件
+- Updated dependencies [f7d0386]
+- Updated dependencies [daf8840]
+  - others-ui@0.0.9
+
 ## 0.0.4
 
 ### Patch Changes
