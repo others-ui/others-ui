@@ -79,6 +79,7 @@
 注意四个class的优先级比name高
 
 <ot-space direction="vertical">
+  <ot-button type="primary" @click="show2 = !show2">切换</ot-button>
   <ot-transition
     :show="show2"
     class="init" 
@@ -88,7 +89,6 @@
       hello world!
     </div>
   </ot-transition>
-  <ot-button type="primary" @click="show2 = !show2">切换</ot-button>
 </ot-space>
 
 ```vue
@@ -162,6 +162,7 @@
 
   .init {
     opacity: 1;
+    transition: all 0.3s ease-out 0s;
   }
 
   .enter-class, .leave-class {

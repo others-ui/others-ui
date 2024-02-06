@@ -16,12 +16,7 @@
   const options = [
     {
       label: html`
-        <style>
-          .color-red {
-            color: red;
-          }
-        <\/style>
-        <span class="color-red">第一个</span>
+        <span style="color: red;">第一个</span>
       `,
       value: "1"
     },

@@ -55,6 +55,8 @@ export class Transition extends BaseElement implements TransitionProps {
 
   private initDisplay?: string
 
+  private removeFn?: () => void
+
   get _display() {
     return this.display
       ? this.display
@@ -79,6 +81,7 @@ export class Transition extends BaseElement implements TransitionProps {
   }
 
   protected willUpdate() {
+    this.removeFn?.()
     if (this.show) {
       this.runShow()
     } else {
@@ -124,18 +127,19 @@ export class Transition extends BaseElement implements TransitionProps {
   }
 
   private runShow() {
-    runTransition(this, {
+    this.removeFn = runTransition(this, {
       enter: () => {
         this.showHostElement()
         this.onEnter()
       },
       run: () => this.onShow(),
       done: () => this.delClass('showClass')
+
     })
   }
 
   private runHide() {
-    runTransition(this, {
+    this.removeFn = runTransition(this, {
       enter: () => this.onHide(),
       run: () =>  this.onLeave(),
       done: () => {
