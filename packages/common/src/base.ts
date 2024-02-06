@@ -30,7 +30,6 @@ export class BaseElement extends LitElement {
     )
   }
 
-
   // 代理事件封装
   static eventAgent: EventAgent<any> = {}
   private eventAgent: EventAgent<any> = {}

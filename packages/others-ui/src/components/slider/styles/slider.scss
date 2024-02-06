@@ -1,0 +1,188 @@
+:host {
+  // TODO token名称待确定
+  --slider-rail-bg-color: var(--primary-color, rgba(0, 0, 0, 0.06));
+  --slider-rail-active-bg-color: var(--primary-color, rgba(0, 0, 0, 0.25));
+  --slider-rail-disabled-bg-color: var(--primary-color, rgba(0, 0, 0, 0.12));
+
+  --slider-track-bg-color: var(--primary-color, #91caff);
+  --slider-track-active-bg-color: var(--primary-color, #69b1ff);
+  --slider-track-disabled-bg-color: var(--primary-color, rgba(0, 0, 0, 0.25));
+
+  --slider-handle-bg-color: var(--primary-color, #91caff);
+  --slider-handle-active-bg-color: var(--primary-color, #1677ff);
+  --slider-handle-disabled-bg-color: var(--primary-color, rgba(0, 0, 0, 0.25));
+}
+
+:host {
+  display: block;
+}
+
+$slider-rail-bg-color: var(--slider-rail-bg-color);
+$slider-rail-active-bg-color: var(--slider-rail-active-bg-color);
+$slider-rail-disabled-bg-color: var(--slider-rail-disabled-bg-color);
+$slider-track-bg-color: var(--slider-track-bg-color);
+$slider-track-active-bg-color: var(--slider-track-active-bg-color);
+$slider-track-disabled-bg-color: var(--slider-track-disabled-bg-color);
+$slider-handle-bg-color: var(--slider-handle-bg-color);
+$slider-handle-active-bg-color: var(--slider-handle-active-bg-color);
+$slider-handle-disabled-bg-color: var(--slider-handle-disabled-bg-color);
+
+@mixin slider-track-active {
+  .slider-track {
+    background-color: $slider-track-active-bg-color;
+  }
+}
+
+@mixin slider-track-disabled {
+  .slider-track {
+    background-color: $slider-track-disabled-bg-color;
+  }
+}
+
+@mixin slider-handle-active {
+  .slider-handle::before {
+    inset-inline-start: -5px;
+    inset-block-start: -5px;
+    width: 20px;
+    height: 20px;
+  }
+
+  .slider-handle::after {
+    inset-inline-start: -1px;
+    inset-block-start: -1px;
+    width: 12px;
+    height: 12px;
+    box-shadow: 0 0 0 4px $slider-handle-active-bg-color;
+  }
+}
+
+@mixin slider-handle-disabled {
+  .slider-handle::before {
+    inset-inline-start: -2px;
+    inset-block-start: -2px;
+    width: 14px;
+    height: 14px;
+    background-color: transparent;
+  }
+
+  .slider-handle::after {
+    height: 10px;
+    width: 10px;
+    inset-block-start: 0;
+    inset-inline-start: 0;
+    box-shadow: 0 0 0 2px $slider-handle-disabled-bg-color;
+  }
+}
+
+.horizontal {
+  position: relative;
+  height: 4px;
+  width: 100%;
+  padding-block: 4px;
+}
+
+.vertical {
+  position: relative;
+  height: 100%;
+  width: 4px;
+  padding-inline: 4px;
+}
+
+.slider-rail {
+  position: absolute;
+  height: 4px;
+  width: 100%;
+  background-color: $slider-rail-bg-color;
+  border-radius: 2px;
+
+  .vertical & {
+    height: 100%;
+    width: 4px;
+  }
+}
+
+.slider-track {
+  position: absolute;
+  border-radius: 2px;
+  background-color: $slider-track-bg-color;
+  transition: background-color 0.2s;
+
+  .horizontal & {
+    left: 0;
+    width: 0;
+    height: 4px;
+  }
+
+  .vertical & {
+    bottom: 0;
+    height: 0;
+    width: 4px;
+  }
+}
+
+.slider-handle {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  outline: none;
+  inset-block-start: 1px;
+  inset-inline-start: 1px;
+
+  .horizontal & {
+    transform: translateX(-50%);
+  }
+
+  .vertical & {
+    transform: translateY(50%);
+  }
+
+  &::before {
+    content: " ";
+    position: absolute;
+    inset-inline-start: -2px;
+    inset-block-start: -2px;
+    width: 14px;
+    height: 14px;
+    background-color: transparent;
+  }
+
+  &::after {
+    content: " ";
+    position: absolute;
+    height: 10px;
+    width: 10px;
+    inset-block-start: 0;
+    inset-inline-start: 0;
+    background-color: #fff;
+    box-shadow: 0 0 0 2px $slider-handle-bg-color;
+    border-radius: 50%;
+    transition:
+      inset-inline-start 0.2s,
+      inset-block-start 0.2s,
+      width 0.2s,
+      height 0.2s,
+      box-shadow 0.2s;
+  }
+}
+
+.slider {
+  position: relative;
+  cursor: pointer;
+
+  &:hover {
+    @include slider-track-active;
+    @include slider-handle-active;
+  }
+
+  &.dragging {
+    @include slider-track-active;
+    @include slider-handle-active;
+  }
+
+  &.disabled {
+    cursor: not-allowed;
+
+    @include slider-track-disabled;
+    @include slider-handle-disabled;
+  }
+}
