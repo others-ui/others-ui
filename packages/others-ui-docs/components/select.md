@@ -4,7 +4,14 @@
 
 <div>
   <div>{{val}}</div>
-  <ot-select :options="options" @change="val = $event.detail" placeholder="请输入"/>
+  <ot-select  
+    search 
+    :options="options" 
+    @change="onChange" 
+    placeholder="请输入"
+    @search="onSearch"
+    :filter="filter"
+  />
 </div>
 
 <script setup>
@@ -13,29 +20,48 @@
 
   const val = ref(0)
 
-  const options = [
-    {
-      label: html`
-        <span style="color: red;">第一个</span>
-      `,
-      value: "1"
-    },
-    {
-      label: '第二个',
-      value: "2"
-    },
-    {
-      label: '第三个',
-      value: "3"
-    },
-    {
-      label: '第四个',
-      value: "4"
-    },
-    {
-      label: '第五个',
-      value: "5"
-    }
-  ]
+  const optionsOrigin = [
+      {
+        label: "第一个",
+        value: "1"
+      },
+      {
+        label: '第二个',
+        value: "2"
+      },
+      {
+        label: '第三个',
+        value: "3"
+      },
+      {
+        label: '第四个',
+        value: "4"
+      },
+      {
+        label: '第五个',
+        value: "5"
+      }
+    ]
+
+  const filter = (val, list) => {
+    return list.filter(item => item.label.startsWith(val))
+  }
+
+  const onSearch = (e) => {
+    console.log('onSearch', e.detail)
+  }
+
+  const options = ref(optionsOrigin)
+
+  const onChange = (e) => { 
+    val.value = e.detail
+    console.log('onChange', e.detail)
+  }
 </script>
+
+<style>
+ot-select {
+  width: 200px;
+}
+</style>
 

@@ -24,7 +24,7 @@ export class BaseElement extends LitElement {
     }
   }
 
-  protected emit<T = any>(event: string, detail: T) {
+  protected emit<T = any>(event: string, detail?: T) {
     this.dispatchEvent(
       new CustomEvent(event, { detail })
     )
@@ -49,29 +49,35 @@ export class BaseElement extends LitElement {
   }
 
 
-  // 拦截自定义事件
+  // 拦截自定义事件 _$committedValue是lit的一个东西需要做兼容
   addEventListener(
     type: keyof HTMLElementEventMap,
-    listener: (e: Event) => void,
+    listener: ((e: Event) => void) & { _$committedValue?: (e: Event) => void },
     options?: boolean | AddEventListenerOptions
   ) {
+
     // 为lit做兼容
     if (!this._eventMap || !this.eventAgent) {
       super.addEventListener(type, listener, options)
       return listener
     }
 
+    const realListener = listener._$committedValue
+      ? listener._$committedValue
+      : listener
+
+
     const fn = (e: Event) => {
       // 没有设置规则
       if (this.eventAgent[type] === undefined) {
-        return listener.call(this, e)
+        return realListener.call(this, e)
       }
 
       const agent = this.eventAgent[type]
 
       if (typeof agent === 'boolean') {
         if (agent) {
-          return listener.call(this, e)
+          return realListener.call(this, e)
         } else {
           return
         }
@@ -79,15 +85,23 @@ export class BaseElement extends LitElement {
 
       if (typeof agent === 'function') {
         if (agent.call(this, e)) {
-          return listener.call(this, e)
+          return realListener.call(this, e)
         } else {
           return
         }
       }
 
       warn('Please pass in the correct parameters')
-      return listener.call(this, e)
+      return realListener.call(this, e)
     }
+
+
+    if (listener._$committedValue) {
+      listener._$committedValue = fn
+      super.addEventListener(type, listener, options)
+      return fn
+    }
+
     this._eventMap.set(listener, fn)
     super.addEventListener(type, fn, options)
     return fn

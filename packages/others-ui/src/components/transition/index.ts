@@ -142,10 +142,11 @@ export class Transition extends BaseElement implements TransitionProps {
     this.removeFn = runTransition(this, {
       enter: () => this.onHide(),
       run: () =>  this.onLeave(),
-      done: () => {
+      done: (_el, e) => {
         this.delClass('hideClass')
         this.delClass('leaveClass')
         this.hideHostElement()
+        this.emit('hideover', e)
       }
     })
   }
