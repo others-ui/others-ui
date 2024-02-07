@@ -63,13 +63,7 @@ export class Select<T> extends BaseElement implements SelectProps<T> {
     if (this.inputRef.value) {
       onCssFocusAndBlur(this.inputRef.value, {
         onFocus: () => {
-
-          if (this.active) {
-            this.active = false
-            return
-          }
-
-          this.active = true
+          this.active = !this.active
         },
         onBlur: () => {
           this.active = false
@@ -114,8 +108,8 @@ export class Select<T> extends BaseElement implements SelectProps<T> {
             ${ifDefined(this.label || this.placeholder)}
           </div>
         </div>
-        <ot-transition .show=${this.active} class="select-list" enterClass='enter-class' leaveClass='leave-class'>
-          <ul class='select-list-box'>
+        <ot-transition .show=${this.active} class="select-list" name="select-list">
+          <ul class="select-list-box">
             ${this.options.map((option) => renderSelectItem(option))}
           </ul>
         </ot-transition>
