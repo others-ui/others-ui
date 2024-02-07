@@ -13,7 +13,6 @@ $selected-color: var(--select-color);
 :host {
   display: block;
   height: 32px;
-  width: 100px;
   font-size: 14px;
 }
 
@@ -31,21 +30,59 @@ li {
   list-style: none;
 }
 
+input {
+  border: none;
+  outline: none;
+}
+
 .select {
   position: relative;
   height: 100%;
   cursor: pointer;
 
-  &-active-label {
+  &-input {
+    position: relative;
     border: 1px solid #ccc;
     border-radius: $border-radius;
     padding: 4px;
     height: 100%;
 
-    div {
+    &-placeholder {
       height: 100%;
       line-height: 22px;
       padding: 0 5px;
+      color: #ccc;
+      font-size: 14px;
+    }
+
+
+    &-container {
+      position: absolute;
+      top: 4px;
+      bottom: 4px;
+      left: 4px;
+      right: 4px;
+      padding: 0 5px;
+
+      &-label {
+        height: 100%;
+        font-size: 14px;
+        line-height: 22px;
+      }
+
+      input {
+        display: block;
+        height: 100%;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        background-color: transparent;
+
+        &::placeholder {
+          color: #ccc;
+          font-size: 14px;
+        }
+      }
     }
 
     &:hover {
@@ -68,23 +105,36 @@ li {
       border: 1px solid transparent;
       padding: 4px;
       background-color: #fff;
-
-      li {
-        height: 30px;
-        line-height: 20px;
-        padding: 5px;
-
-        &:hover {
-          cursor: pointer;
-          font-weight: bold;
-          background-color: rgba(0, 0, 0, 0.05);
-          border-radius: $border-radius;
-        }
-      }
-
       box-shadow: 0 6px 16px 0 rgba(0, 0, 0, 0.08),
       0 3px 6px -4px rgba(0, 0, 0, 0.12),
       0 9px 28px 8px rgba(0, 0, 0, 0.05);
+
+      ul {
+        li {
+          height: 30px;
+          line-height: 20px;
+          padding: 5px;
+
+          &:hover {
+            cursor: pointer;
+            font-weight: bold;
+            background-color: rgba(0, 0, 0, 0.05);
+            border-radius: $border-radius;
+          }
+        }
+      }
+
+      &-no-data {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding-top: 5px;
+
+        span {
+          font-size: 12px;
+          color: #ccc;
+        }
+      }
     }
 
     &-enter-class, &-leave-class {
@@ -92,25 +142,18 @@ li {
       transform: scale(0.5);
     }
   }
-
-
-  &-active-label-hover {
-    border-color: $hover-primary-color;
-  }
 }
 
-.placeholder-color {
-  color: #ccc;
-  user-select: none;
+.select-active-border {
+  border-color: $hover-primary-color;
 }
 
-.active {
-  color: #ccc;
-  position: relative;
-}
-
-.selected {
+.select-item-selected {
   font-weight: bold;
   border-radius: $border-radius;
   background-color: $selected-color !important;
+}
+
+.select-placeholder-color {
+  color: #ccc;
 }

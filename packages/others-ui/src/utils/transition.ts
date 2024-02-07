@@ -1,8 +1,13 @@
 import { nextFrame } from './nextFrame'
 
+
+type TransitionOverType =
+  | 'end'
+  | 'cancel'
+  | 'noTransition'
 export interface TransitionHandler {
   enter?(el: HTMLElement): void
-  done?(el: HTMLElement, e: TransitionEvent | null): void
+  done?(el: HTMLElement, e: TransitionOverType): void
   run?(el: HTMLElement): void
 }
 
@@ -63,7 +68,7 @@ export function runTransition(el: HTMLElement, handler: TransitionHandler) {
   el.addEventListener('transitionend', f3 = (e: TransitionEvent) => {
     property = property.filter(i => i !== e.propertyName)
     if (property.length === 0) {
-      handler.done?.(el, e)
+      handler.done?.(el, 'end')
       remove()
     }
   })
@@ -79,13 +84,13 @@ export function runTransition(el: HTMLElement, handler: TransitionHandler) {
 
     // 如果不存在transition事件, 则按普通显示和隐藏处理
     if (!duration && !delay) {
-      handler.done?.(el, null)
+      handler.done?.(el, 'noTransition')
       remove()
     }
   })
 
   return () => {
-    handler.done?.(el, null)
+    handler.done?.(el, 'cancel')
     remove()
   }
 }
