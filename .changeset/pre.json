@@ -2,6 +2,8 @@
   "mode": "pre",
   "tag": "alpha",
   "initialVersions": {
+    "@others-ui/space": "0.0.9",
+    "@others-ui/transition": "0.0.9",
     "@others-ui/common": "0.0.9",
     "others-ui": "0.0.9",
     "others-ui-docs": "0.0.5"

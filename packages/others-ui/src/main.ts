@@ -1,6 +1,6 @@
 import './presets'
 // 全局样式库
-import './styles/index.scss'
+import './styles/index.outer.scss'
 
 
 if (__DEV__) {
