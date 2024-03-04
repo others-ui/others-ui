@@ -1,9 +1,9 @@
 {
-  "name": "@others-ui/common",
+  "name": "@others-ui/space",
   "version": "0.0.9",
-  "description": "others-ui公共依赖",
+  "description": "others-ui",
   "main": "./index.js",
-  "module": "./dist/common.esm.js",
+  "module": "./dist/space.esm.js",
   "types": "./dist/types/index.d.ts",
   "source": "./src/index.ts",
   "author": "yanyunwu",
@@ -18,15 +18,20 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/others-ui/others-ui",
-    "directory": "packages/others-ui"
+    "url": "https://github.com/others-ui/others-ui"
   },
   "publishConfig": {
     "access": "public",
     "registry": "https://registry.npmjs.org/"
   },
-  "peerDependencies": {
-    "@lit/context": "^1.1.0",
-    "lit": "^3.1.1"
+  "dependencies": {
+    "@others-ui/common": "workspace:*"
+  },
+  "build":  {
+    "global_name": "OtSpace",
+    "depend_globals": {
+      "@others-ui/common": "OthersUICommon"
+    },
+    "mode": ["cjs", "esm", "umd"]
   }
 }

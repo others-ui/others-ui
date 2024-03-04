@@ -11,7 +11,7 @@
     "moduleResolution": "Node",
     "resolveJsonModule": true,
     "isolatedModules": true,
-    "allowJs": true,
+    "allowJs": false,
     "checkJs": false,
 
     /* Linting */
@@ -19,7 +19,18 @@
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true,
-    "outDir": "docs"
+
+    "paths": {
+      "@others-ui/*": [
+        "./packages/*/src",
+        "./components/*/src"
+      ],
+    }
   },
-  "exclude": ["node_modules", "docs"]
+  "exclude": [
+    "node_modules",
+    "docs",
+    "./packages/*/dist",
+    "./components/*/dist"
+  ]
 }

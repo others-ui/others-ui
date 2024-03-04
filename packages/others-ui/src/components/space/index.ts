@@ -1,3 +1,2 @@
-export { Space as default } from './space'
-export { Space } from './space'
-export type { SpaceProps } from './space'
+export { Space } from '@others-ui/space'
+export type { SpaceProps } from '@others-ui/space'

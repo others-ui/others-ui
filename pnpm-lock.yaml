@@ -123,6 +123,18 @@ importers:
         specifier: ^5.3.3
         version: 5.3.3
 
+  components/space:
+    dependencies:
+      '@others-ui/common':
+        specifier: workspace:*
+        version: link:../../packages/common
+
+  components/transition:
+    dependencies:
+      '@others-ui/common':
+        specifier: workspace:*
+        version: link:../../packages/common
+
   packages/common:
     dependencies:
       '@lit/context':
@@ -137,6 +149,12 @@ importers:
       '@others-ui/common':
         specifier: workspace:*
         version: link:../common
+      '@others-ui/space':
+        specifier: workspace:*
+        version: link:../../components/space
+      '@others-ui/transition':
+        specifier: workspace:*
+        version: link:../../components/transition
 
   packages/others-ui-docs:
     dependencies:
