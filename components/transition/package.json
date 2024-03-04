@@ -1,6 +1,6 @@
 {
   "name": "@others-ui/transition",
-  "version": "0.0.9",
+  "version": "0.0.10-alpha.0",
   "description": "others-ui",
   "main": "./index.js",
   "module": "./dist/transition.esm.js",
@@ -27,11 +27,15 @@
   "dependencies": {
     "@others-ui/common": "workspace:*"
   },
-  "build":  {
+  "build": {
     "global_name": "OtTransition",
     "depend_globals": {
       "@others-ui/common": "OthersUICommon"
     },
-    "mode": ["cjs", "esm", "umd"]
+    "mode": [
+      "cjs",
+      "esm",
+      "umd"
+    ]
   }
 }

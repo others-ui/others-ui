@@ -8,5 +8,7 @@
     "others-ui": "0.0.9",
     "others-ui-docs": "0.0.5"
   },
-  "changesets": []
+  "changesets": [
+    "modern-snails-cheer"
+  ]
 }
