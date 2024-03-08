@@ -1,10 +1,9 @@
 # Button组件
 
-<br>
-
 ## 不同样式
 
-<playground-ide ref="demo1" editable-file-system line-numbers resizable />
+<d-container path="button/demo1" />
+
 
 ## 不同尺寸
 
@@ -95,22 +94,22 @@
     loading.value = !loading.value
   }
 
-  const demo1 = ref()
-  onMounted(() => {
-    const a = 'demo1'
-    import(`../html/button/${a}.html?raw`).then(value => {
+  // const demo1 = ref()
+  // onMounted(() => {
+  //   const a = 'demo1'
+  //   import(`../html/button/${a}.html?raw`).then(value => {
 
-      console.log('value', value)
+  //     console.log('value', value)
 
-    demo1.value.config = {
-          files: {
-            'index.html': {
-              content: value.default
-            }
-          }
-        }
-    })
-  })
+  //   demo1.value.config = {
+  //         files: {
+  //           'index.html': {
+  //             content: value.default
+  //           }
+  //         }
+  //       }
+  //   })
+  // })
 </script>
 
 <style>
