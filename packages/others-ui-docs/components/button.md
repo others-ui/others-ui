@@ -4,23 +4,7 @@
 
 ## 不同样式
 
-<div>
-  <ot-space direction="vertical">
-    <ot-button block type="primary">默认</ot-button>
-    <ot-button block type="success">默认</ot-button>
-    <ot-button block type="warn">默认</ot-button>
-    <ot-button block type="error">默认</ot-button>
-  </ot-space>
-</div>
-
-```html{2}
-<ot-space direction="vertical">
-  <ot-button block type="primary">默认</ot-button>
-  <ot-button block type="success">默认</ot-button>
-  <ot-button block type="warn">默认</ot-button>
-  <ot-button block type="error">默认</ot-button>
-</ot-space>
-```
+<playground-ide ref="demo1" editable-file-system line-numbers resizable />
 
 ## 不同尺寸
 
@@ -104,9 +88,34 @@
 </ot-space>
 
 <script setup>
-  import { ref } from 'vue'
+  import { ref, onMounted } from 'vue'
+
   const loading = ref(false)
   const onClick = (e) => {
     loading.value = !loading.value
   }
+
+  const demo1 = ref()
+  onMounted(() => {
+    const a = 'demo1'
+    import(`../html/button/${a}.html?raw`).then(value => {
+
+      console.log('value', value)
+
+    demo1.value.config = {
+          files: {
+            'index.html': {
+              content: value.default
+            }
+          }
+        }
+    })
+  })
 </script>
+
+<style>
+  playground-ide {
+   border-radius: 10px;
+   overflow: hidden;
+  }
+</style>
