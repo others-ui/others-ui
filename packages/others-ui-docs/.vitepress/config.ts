@@ -61,9 +61,14 @@ export default defineConfig({
   vue: {
     template: {
       compilerOptions: {
-        isCustomElement: tag => tag.startsWith('ot-'),
+        isCustomElement: tag => tag.startsWith('ot-') || tag.startsWith('playground-'),
       },
     },
   },
-  base: '/docs/'
+  base: '/docs/',
+  vite: {
+    optimizeDeps: {
+      exclude: ['playground-elements']
+    }
+  }
 })
