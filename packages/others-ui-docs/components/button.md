@@ -1,29 +1,14 @@
 # Button组件
 
-<br>
-
 ## 不同样式
 
-<playground-ide ref="demo1" editable-file-system line-numbers resizable />
+<d-container path="button/demo1"/>
+
 
 ## 不同尺寸
 
-<div>
-  <ot-space direction="vertical">
-    <ot-button block disabled>默认禁用</ot-button>
-    <ot-button block type="primary">默认</ot-button>
-    <ot-button block type="primary" size="small">small</ot-button>
-    <ot-button block type="primary" size="large">large</ot-button>
-  </ot-space>
-</div>
+<d-container path="button/demo2"/>
 
-```html
-<ot-space direction="vertical">
-  <ot-button block type="primary">默认</ot-button>
-  <ot-button block type="primary" size="small">small</ot-button>
-  <ot-button block type="primary" size="large">large</ot-button>
-</ot-space>
-```
 
 ## 内行元素
 
@@ -95,22 +80,22 @@
     loading.value = !loading.value
   }
 
-  const demo1 = ref()
-  onMounted(() => {
-    const a = 'demo1'
-    import(`../html/button/${a}.html?raw`).then(value => {
+  // const demo1 = ref()
+  // onMounted(() => {
+  //   const a = 'demo1'
+  //   import(`../html/button/${a}.html?raw`).then(value => {
 
-      console.log('value', value)
+  //     console.log('value', value)
 
-    demo1.value.config = {
-          files: {
-            'index.html': {
-              content: value.default
-            }
-          }
-        }
-    })
-  })
+  //   demo1.value.config = {
+  //         files: {
+  //           'index.html': {
+  //             content: value.default
+  //           }
+  //         }
+  //       }
+  //   })
+  // })
 </script>
 
 <style>
