@@ -2,7 +2,7 @@
 
 ## 默认使用
 
-<d-container path="switch/demo1" />
+<d-container path="switch/demo1" :preview-height="150" />
 
 
 

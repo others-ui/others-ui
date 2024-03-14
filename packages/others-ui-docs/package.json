@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@vitepress-demo-preview/component": "^2.3.2",
+    "ant-design-vue": "4.x",
     "others-ui": "workspace:*",
     "playground-elements": "^0.18.1",
     "vue": "^3.3.4"
