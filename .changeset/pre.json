@@ -2,11 +2,12 @@
   "mode": "pre",
   "tag": "alpha",
   "initialVersions": {
-    "@others-ui/space": "0.0.9",
-    "@others-ui/transition": "0.0.9",
-    "@others-ui/common": "0.0.9",
-    "others-ui": "0.0.9",
-    "others-ui-docs": "0.0.5"
+    "@others-ui/message": "0.0.0",
+    "@others-ui/space": "0.0.10-alpha.0",
+    "@others-ui/transition": "0.0.10-alpha.0",
+    "@others-ui/common": "0.0.10-alpha.0",
+    "others-ui": "0.0.10-alpha.0",
+    "others-ui-docs": "0.0.6-alpha.0"
   },
   "changesets": [
     "modern-snails-cheer"
