@@ -128,6 +128,9 @@ importers:
       '@others-ui/common':
         specifier: workspace:*
         version: link:../../packages/common
+      '@others-ui/transition':
+        specifier: workspace:0.0.10-alpha.0
+        version: link:../transition
 
   components/space:
     dependencies:
@@ -155,6 +158,9 @@ importers:
       '@others-ui/common':
         specifier: workspace:*
         version: link:../common
+      '@others-ui/message':
+        specifier: workspace:^
+        version: link:../../components/message
       '@others-ui/space':
         specifier: workspace:*
         version: link:../../components/space

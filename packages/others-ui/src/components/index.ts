@@ -10,3 +10,5 @@ export * from './checkbox'
 export * from './select'
 export * from './transition'
 export * from './slider'
+
+export * from '@others-ui/message'

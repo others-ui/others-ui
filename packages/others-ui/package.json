@@ -39,7 +39,8 @@
   },
   "dependencies": {
     "@others-ui/common": "workspace:*",
-    "@others-ui/transition": "workspace:*",
-    "@others-ui/space": "workspace:*"
+    "@others-ui/message": "workspace:^",
+    "@others-ui/space": "workspace:*",
+    "@others-ui/transition": "workspace:*"
   }
 }

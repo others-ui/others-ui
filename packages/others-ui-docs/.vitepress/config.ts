@@ -40,6 +40,7 @@ export default defineConfig({
           { text: 'Form', link: '/components/form' },
           { text: 'Select', link: '/components/select' },
           { text: 'Slider', link: '/components/slider' },
+          { text: 'Message', link: '/components/message' },
           {
             text: '其他组件',
             collapsed: false,

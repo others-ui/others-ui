@@ -51,7 +51,7 @@ export class BaseElement extends LitElement {
 
   // 拦截自定义事件 _$committedValue是lit的一个东西需要做兼容
   addEventListener(
-    type: keyof HTMLElementEventMap,
+    type: string,
     listener: ((e: Event) => void) & { _$committedValue?: (e: Event) => void },
     options?: boolean | AddEventListenerOptions
   ) {
@@ -67,17 +67,19 @@ export class BaseElement extends LitElement {
       : listener
 
 
+    let emit = (e: Event) => realListener.call ? realListener.call(this, e) : realListener(e)
+
     const fn = (e: Event) => {
       // 没有设置规则
       if (this.eventAgent[type] === undefined) {
-        return realListener.call(this, e)
+        return emit(e)
       }
 
       const agent = this.eventAgent[type]
 
       if (typeof agent === 'boolean') {
         if (agent) {
-          return realListener.call(this, e)
+          return emit(e)
         } else {
           return
         }
@@ -85,14 +87,26 @@ export class BaseElement extends LitElement {
 
       if (typeof agent === 'function') {
         if (agent.call(this, e)) {
-          return realListener.call(this, e)
+          return emit(e)
         } else {
           return
         }
       }
 
       warn('Please pass in the correct parameters')
-      return realListener.call(this, e)
+      return emit(e)
+    }
+
+    // @ts-ignore
+    if (realListener._$AH) {
+      // @ts-ignore
+      const ifn = realListener._$AH
+      // @ts-ignore
+      realListener._$AH = fn
+      // @ts-ignore
+      emit = (e: Event) => ifn.call(this, e)
+      super.addEventListener(type, realListener, options)
+      return realListener
     }
 
 
