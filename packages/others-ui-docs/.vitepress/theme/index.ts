@@ -3,7 +3,6 @@ import { App, h, version } from 'vue'
 import Theme from 'vitepress/theme'
 import OthersUI, { register } from 'others-ui'
 import DContainer from '../DContainer.vue'
-import 'others-ui/others-ui.css'
 import './style.css'
 
 console.log('vue version', version)

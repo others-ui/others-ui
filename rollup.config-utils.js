@@ -39,6 +39,11 @@ export function resolvePlugins({
   // 只打包组件内的css为字符串
   plugins.push(
     postcss({
+      use: {
+        sass: {
+          data: `@import "${path.resolve(__dirname, './styles/index.scss')}";`
+        }
+      },
       extensions: ['.css', '.scss', '.sass'],
       inject: false,
       extract: false,

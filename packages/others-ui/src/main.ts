@@ -1,7 +1,4 @@
 import './presets'
-// 全局样式库
-import './styles/index.outer.scss'
-
 
 if (__DEV__) {
   log(

@@ -1,0 +1,5 @@
+
+$border-radius: var(--select-border-radius, 8px);
+$primary-color: var(--ot-primary-color, $ot-primary-color);
+$hover-primary-color: var(--ot-primary-color, $ot-primary-color-light);
+$selected-color: var(--select-selected-color, lighten(green, 60%));

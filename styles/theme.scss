@@ -1,0 +1,20 @@
+// 只储存一些默认样式的变量, 不建议写入css样式
+
+
+/** ==========> 基础颜色 <========== */
+$ot-primary-color: #2b5aed; // 默认色
+$ot-primary-color-light: lighten($ot-primary-color, 10%);
+$ot-primary-color-dark: darken($ot-primary-color, 10%);
+
+$ot-success-color: #1fb4a2; // 成功色
+$ot-success-color-light: lighten($ot-success-color, 10%);
+$ot-success-color-dark: darken($ot-success-color, 10%);
+
+$ot-warn-color: #ffaa1a; // 警告色
+$ot-warn-color-light: lighten($ot-warn-color, 10%);
+$ot-warn-color-dark: darken($ot-warn-color, 10%);
+
+$ot-error-color: #fa5247; // 错误色
+$ot-error-color-light: lighten($ot-error-color, 10%);
+$ot-error-color-dark: darken($ot-error-color, 10%);
+

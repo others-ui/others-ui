@@ -1,4 +1,3 @@
-@import '../../../common/styles.scss';
 @import './variable.scss';
 
 div {
@@ -17,7 +16,7 @@ svg {
   display: inline-block;
   padding: 4px 15px;
   font-size: 14px;
-  border-radius: $button_border-radius;
+  border-radius: $button-border-radius;
   cursor: pointer;
   user-select: none;
   text-align: center;
@@ -26,13 +25,13 @@ svg {
 }
 
 :host(:hover) {
-  color: var(--#{$g__prefix}-primary-light);
-  border-color: var(--#{$g__prefix}-primary-light);
+  color: $button-primary-color-light;
+  border-color: $button-primary-color-light;
 }
 
 :host(:active) {
-  color: var(--#{$g__prefix}-primary-dark);
-  border-color: var(--#{$g__prefix}-primary-dark);
+  color: $button-primary-color-dark;
+  border-color: $button-primary-color-dark;
 }
 
 // block属性
@@ -68,61 +67,61 @@ svg {
 // type=primary
 :host([type="primary"]) {
   color: white;
-  background-color: var(--#{$g__prefix}-primary);
+  background-color: $button-primary-color;
   border: none;
 }
 
 :host([type="primary"]:hover), :host([type="primary"][disabled]) {
-  background-color: var(--#{$g__prefix}-primary-light);
+  background-color: $button-primary-color-light;
 }
 
 :host([type="primary"]:not([disabled]):active) {
-  background-color: var(--#{$g__prefix}-primary-dark);
+  background-color: $button-primary-color-dark;
 }
 
 // type=success
 :host([type="success"]) {
   color: white;
-  background-color: var(--#{$g__prefix}-success);
+  background-color: $button-success-color;
   border: none;
 }
 
 :host([type="success"]:hover), :host([type="success"][disabled]) {
-  background-color: var(--#{$g__prefix}-success-light);
+  background-color: $button-success-color-light;
 }
 
 :host([type="success"]:not([disabled]):active) {
-  background-color: var(--#{$g__prefix}-success-dark);
+  background-color: $button-success-color-dark;
 }
 
 // type=warn
 :host([type="warn"]) {
   color: white;
-  background-color: var(--#{$g__prefix}-warn);
+  background-color: $button-warn-color;
   border: none;
 }
 
 :host([type="warn"]:hover), :host([type="warn"][disabled]) {
-  background-color: var(--#{$g__prefix}-warn-light);
+  background-color: $button-warn-color-light;
 }
 
 :host([type="warn"]:not([disabled]):active) {
-  background-color: var(--#{$g__prefix}-warn-dark);
+  background-color: $button-warn-color-dark;
 }
 
 // type=error
 :host([type="error"]) {
   color: white;
-  background-color: var(--#{$g__prefix}-error);
+  background-color: $button-error-color;
   border: none;
 }
 
 :host([type="error"]:hover), :host([type="error"][disabled]) {
-  background-color: var(--#{$g__prefix}-error-light);
+  background-color: $button-error-color-light;
 }
 
 :host([type="error"]:not([disabled]):active) {
-  background-color: var(--#{$g__prefix}-error-dark);
+  background-color: $button-error-color-dark;
 }
 
 

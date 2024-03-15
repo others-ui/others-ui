@@ -1,2 +1,25 @@
 
-$button_border-radius: 6px;
+$button-primary-color: var(--ot-primary-color, $ot-primary-color);
+$button-primary-color-light: var(--ot-primary-color-light, $ot-primary-color-light);
+$button-primary-color-dark: var(--ot-primary-color-dark, $ot-primary-color-dark);
+
+$button-success-color: var(--ot-success-color, $ot-success-color);
+$button-success-color-light: var(--ot-success-color-light, $ot-success-color-light);
+$button-success-color-dark: var(--ot-success-color-dark, $ot-success-color-dark);
+
+$button-warn-color: var(--ot-warn-color, $ot-warn-color);
+$button-warn-color-light: var(--ot-warn-color-light, $ot-warn-color-light);
+$button-warn-color-dark: var(--ot-warn-color-dark, $ot-warn-color-dark);
+
+$button-error-color: var(--ot-error-color, $ot-error-color);
+$button-error-color-light: var(--ot-error-color-light, $ot-error-color-light);
+$button-error-color-dark: var(--ot-error-color-dark, $ot-error-color-dark);
+
+$button-border-radius: var(--ot-button-border-radius, 6px);
+
+
+
+
+
+
+

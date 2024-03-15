@@ -1,16 +1,16 @@
 :host {
   // TODO token名称待确定
-  --slider-rail-bg-color: var(--primary-color, rgba(0, 0, 0, 0.06));
-  --slider-rail-active-bg-color: var(--primary-color, rgba(0, 0, 0, 0.25));
-  --slider-rail-disabled-bg-color: var(--primary-color, rgba(0, 0, 0, 0.12));
+  --slider-rail-bg-color: var(--ot-primary-color, rgba(0, 0, 0, 0.06));
+  --slider-rail-active-bg-color: var(--ot-primary-color, rgba(0, 0, 0, 0.25));
+  --slider-rail-disabled-bg-color: var(--ot-primary-color, rgba(0, 0, 0, 0.12));
 
-  --slider-track-bg-color: var(--primary-color, #91caff);
-  --slider-track-active-bg-color: var(--primary-color, #69b1ff);
-  --slider-track-disabled-bg-color: var(--primary-color, rgba(0, 0, 0, 0.25));
+  --slider-track-bg-color: var(--ot-primary-color, #91caff);
+  --slider-track-active-bg-color: var(--ot-primary-color, #69b1ff);
+  --slider-track-disabled-bg-color: var(--ot-primary-color, rgba(0, 0, 0, 0.25));
 
-  --slider-handle-bg-color: var(--primary-color, #91caff);
-  --slider-handle-active-bg-color: var(--primary-color, #1677ff);
-  --slider-handle-disabled-bg-color: var(--primary-color, rgba(0, 0, 0, 0.25));
+  --slider-handle-bg-color: var(--ot-primary-color, #91caff);
+  --slider-handle-active-bg-color: var(--ot-primary-color, #1677ff);
+  --slider-handle-disabled-bg-color: var(--ot-primary-color, rgba(0, 0, 0, 0.25));
 }
 
 :host {

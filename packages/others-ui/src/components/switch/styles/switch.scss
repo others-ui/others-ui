@@ -1,4 +1,4 @@
-@import '../../../common/styles.scss';
+@import './variable.scss';
 
 
 :host {
@@ -16,7 +16,7 @@
     display: none;
     &:checked {
       & + .slider {
-        background-color: var(--#{$g__prefix}-primary);
+        background-color: $switch-primary-color;
         &:before {
           height: 20px;
           width: 20px;
@@ -30,7 +30,7 @@
     }
     &:focus {
       & + .slider {
-        box-shadow: 0 0 1px var(--#{$g__prefix}-primary);
+        box-shadow: 0 0 1px $switch-primary-color;
       }
     }
   }

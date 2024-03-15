@@ -1,14 +1,4 @@
-:host {
-  --border-radius: var(--others-ui-select-border-radius, 8px);
-  --primary-color: var(--others-ui-select-primary-color, #2b5aed);
-  --hover-primary-color: var(--others-ui-select-hover-primary-color, #{lighten(#2b5aed, 10%)});
-  --select-color: var(--others-ui-select-selected-color, #{lighten(green, 60%)});
-}
-
-$border-radius: var(--border-radius);
-$primary-color: var(--primary-color);
-$hover-primary-color: var(--hover-primary-color);
-$selected-color: var(--select-color);
+@import "./variable.scss";
 
 :host {
   display: block;

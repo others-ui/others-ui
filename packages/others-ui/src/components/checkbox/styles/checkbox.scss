@@ -1,4 +1,4 @@
-@import '../../../common/styles.scss';
+@import './variable.scss';
 
 :host {
   display: inline-block;
@@ -17,8 +17,8 @@
     display: none;
 
     &:checked + .checkbox {
-      background-color: var(--#{$g__prefix}-primary);
-      border-color: var(--#{$g__prefix}-primary);
+      background-color: $checkbox-primary-color;
+      border-color: $checkbox-primary-color;
 
       &::before {
         content: "";
@@ -46,7 +46,7 @@
     transition: all .3s;
 
     &:hover {
-      border-color: var(--#{$g__prefix}-primary-light);
+      border-color: $checkbox-primary-color-light;
     }
   }
 
