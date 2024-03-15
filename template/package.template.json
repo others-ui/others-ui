@@ -1,0 +1,41 @@
+{
+  "name": "@others-ui/$$componentName$$",
+  "version": "0.0.0",
+  "description": "others-ui",
+  "main": "./index.js",
+  "module": "./dist/$$componentName$$.esm.js",
+  "types": "./dist/types/index.d.ts",
+  "source": "./src/index.ts",
+  "author": "yanyunwu",
+  "license": "MIT",
+  "homepage": "https://others-ui.github.io/docs",
+  "keywords": [
+    "others-ui",
+    "web-components",
+    "lit",
+    "组件库",
+    "components"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/others-ui/others-ui"
+  },
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  },
+  "dependencies": {
+    "@others-ui/common": "workspace:*"
+  },
+  "build": {
+    "global_name": "Ot$$globalComponentName$$",
+    "depend_globals": {
+      "@others-ui/common": "OthersUICommon"
+    },
+    "mode": [
+      "cjs",
+      "esm",
+      "umd"
+    ]
+  }
+}

@@ -123,6 +123,12 @@ importers:
         specifier: ^5.3.3
         version: 5.3.3
 
+  components/message:
+    dependencies:
+      '@others-ui/common':
+        specifier: workspace:*
+        version: link:../../packages/common
+
   components/space:
     dependencies:
       '@others-ui/common':

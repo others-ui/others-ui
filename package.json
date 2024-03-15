@@ -23,7 +23,8 @@
     "docs:build": "pnpm --filter others-ui-docs run docs:build",
     "docs:release": "node ./scripts/build-docs.js",
     "docs:submodule-push": "sh scripts/submodule.sh",
-    "cm": "cz"
+    "cm": "cz",
+    "create": "node ./scripts/create.js"
   },
   "devDependencies": {
     "@babel/core": "^7.22.9",
