@@ -14,13 +14,12 @@ export interface SliderProps {
   vertical?: boolean
 }
 
-
 export abstract class SliderProperties extends BaseElement implements SliderProps {
   /**
- * @description 自动获取焦点
- * @default false
- * todo
- */
+   * @description 自动获取焦点
+   * @default false
+   * todo
+   */
   @property({ type: Boolean })
   public autofocus: boolean = false
 

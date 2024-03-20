@@ -2,12 +2,10 @@ import { expect, fixture, html, oneEvent } from '@open-wc/testing'
 import { Checkbox, CheckboxGroup } from '../../../..'
 import { sleep } from '../../../utils/test'
 
-
 Checkbox.register()
 CheckboxGroup.register()
 
 describe('test checkbox group', () => {
-
   let el: CheckboxGroup<string>
 
   beforeEach(async () => {

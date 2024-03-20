@@ -4,6 +4,7 @@
   top: 100px;
   left: 50%;
   transform: translateX(-50%);
+  transition: all .3s;
 }
 
 :host {
@@ -16,19 +17,22 @@
     span {
       color: white;
     }
-
-
   }
 }
 
 ot-transition {
   opacity: 1;
-  transition: all .3s;
+  transition: all .3s ease-in-out;
 }
 
 .message {
-  &-enter-class, &-leave-class {
+  &-enter-class {
     opacity: 0;
     transform: translateY(-20px);
+  }
+
+  &-leave-class {
+    opacity: 0;
+    transform: translateY(-10px);
   }
 }

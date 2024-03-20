@@ -4,7 +4,6 @@ import { Switch } from '../../../..'
 Switch.register()
 
 describe('test switch', () => {
-
   let el: Switch
 
   beforeEach(async () => {

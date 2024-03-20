@@ -19,7 +19,10 @@ const globalComponentName = componentName.slice(0, 1).toUpperCase() + componentN
 const template_path = resolve(__dirname, '../template')
 const target_path = resolve(__dirname, `../components/${componentName}`)
 
-const replace = (content) => content.replace(/\$\$componentName\$\$/g, componentName).replace(/\$\$globalComponentName\$\$/g, globalComponentName)
+const replace = (content) =>
+  content
+    .replace(/\$\$componentName\$\$/g, componentName)
+    .replace(/\$\$globalComponentName\$\$/g, globalComponentName)
 
 const copy = (sd, td) => {
   const sourceFile = fs.readdirSync(sd, { withFileTypes: true })
@@ -27,7 +30,7 @@ const copy = (sd, td) => {
     const srcFile = path.resolve(sd, file.name)
     const tagFile = path.resolve(td, replace(file.name).replace('.template', ''))
     if (file.isDirectory() && !fs.existsSync(tagFile)) {
-      fs.mkdirSync(tagFile, err => console.log(err))
+      fs.mkdirSync(tagFile, (err) => console.log(err))
       copy(srcFile, tagFile)
     } else if (file.isDirectory() && fs.existsSync(tagFile)) {
       copy(srcFile, tagFile)
@@ -40,11 +43,11 @@ const copy = (sd, td) => {
   }
 }
 
-const run =  () => {
+const run = () => {
   if (!fs.existsSync(template_path)) {
     throw '模版不存在！'
   } else if (!fs.existsSync(target_path)) {
-    fs.mkdirSync(target_path, err => console.log(err))
+    fs.mkdirSync(target_path, (err) => console.log(err))
     copy(template_path, target_path)
   } else {
     throw '目录已存在！'

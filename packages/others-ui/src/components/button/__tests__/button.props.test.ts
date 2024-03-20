@@ -5,7 +5,6 @@ import { Button } from '../../../..'
 Button.register()
 
 describe('test button props', () => {
-
   let el: Button
 
   beforeEach(async () => {
@@ -28,4 +27,3 @@ describe('test button props', () => {
     expect(styles.display).to.equal('block')
   })
 })
-

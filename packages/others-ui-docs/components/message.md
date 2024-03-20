@@ -7,6 +7,6 @@
   import { message } from 'others-ui'
   const handleClick = () => {
     console.log('message', message)
-    message.success('成功')
+    message.success('成功', 5000)
   }
 </script>

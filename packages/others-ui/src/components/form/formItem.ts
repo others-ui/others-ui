@@ -13,23 +13,25 @@ export interface FormItemProps {
 
 export class FormItem<T = unknown> extends BaseElement implements FormItemProps {
   static componentName = 'form-item'
-  static styles = css`${unsafeCSS(styles)}`
+  static styles = css`
+    ${unsafeCSS(styles)}
+  `
 
   /**
    * 向子元素提供状态的provider
-  */
-  @consume({context: FormContext, subscribe: true})
-  @property({attribute: false})
+   */
+  @consume({ context: FormContext, subscribe: true })
+  @property({ attribute: false })
   public formContext?: FormContextValue
 
-  @provide({context: FormItemContext})
-  @property({attribute: false})
+  @provide({ context: FormItemContext })
+  @property({ attribute: false })
   private formItemContext?: FormItemContextValue<T>
 
-  @property({type: String})
+  @property({ type: String })
   public label?: string
 
-  @property({type: String})
+  @property({ type: String })
   public name?: string
 
   constructor() {
@@ -56,9 +58,11 @@ export class FormItem<T = unknown> extends BaseElement implements FormItemProps 
     return this.formContext?.values[this.name] as T
   }
 
-  protected willUpdate(state: PropertyValueMap<FormItemProps & { formContext: FormContextValue }> ): void {
+  protected willUpdate(
+    state: PropertyValueMap<FormItemProps & { formContext: FormContextValue }>,
+  ): void {
     if (state.has('formContext') && this.formItemContext) {
-      this.formItemContext = {...this.formItemContext, value: this.value}
+      this.formItemContext = { ...this.formItemContext, value: this.value }
     }
   }
 

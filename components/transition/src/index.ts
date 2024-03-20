@@ -1,12 +1,7 @@
 import { BaseElement, css, html, property } from '@others-ui/common'
 import { runTransition } from './utils/transition'
 
-export type TransitionClassName =
-  | 'enterClass'
-  | 'showClass'
-  | 'hideClass'
-  | 'leaveClass'
-
+export type TransitionClassName = 'enterClass' | 'showClass' | 'hideClass' | 'leaveClass'
 
 export type TransitionClassProps = {
   [P in TransitionClassName]?: string
@@ -16,12 +11,13 @@ export interface TransitionProps extends TransitionClassProps {
   show?: boolean
   display?: CSSStyleDeclaration['display']
   name?: string
+  first?: boolean
 }
 
 /**
  * 通用过渡动画组件
  * 类似于vue的用法
-*/
+ */
 export class Transition extends BaseElement implements TransitionProps {
   static componentName: string = 'transition'
   static styles = css`
@@ -30,25 +26,28 @@ export class Transition extends BaseElement implements TransitionProps {
     }
   `
 
-  @property({type: Boolean, reflect: true})
+  @property({ type: Boolean, reflect: true })
   public show: boolean = true
 
-  @property({type: String, reflect: true})
+  @property({ type: String, reflect: true })
   public display?: string
 
-  @property({type: String, reflect: true})
+  @property({ type: String, reflect: true })
   public name?: string
 
-  @property({type: String})
+  @property({ type: Boolean })
+  public first: boolean = true
+
+  @property({ type: String })
   public enterClass?: string
 
-  @property({type: String})
+  @property({ type: String })
   public showClass?: string
 
-  @property({type: String})
+  @property({ type: String })
   public hideClass?: string
 
-  @property({type: String})
+  @property({ type: String })
   public leaveClass?: string
 
   private mounted: boolean = false
@@ -58,9 +57,7 @@ export class Transition extends BaseElement implements TransitionProps {
   private removeFn?: () => void
 
   get _display() {
-    return this.display
-      ? this.display
-      : this.initDisplay
+    return this.display ? this.display : this.initDisplay
   }
 
   private onEnter() {
@@ -83,7 +80,16 @@ export class Transition extends BaseElement implements TransitionProps {
   protected willUpdate() {
     this.removeFn?.()
     if (this.show) {
-      this.runShow()
+      if (this.mounted) {
+        this.runShow()
+      } else {
+        if (this.first) {
+          this.hideHostElement()
+          requestAnimationFrame(() => this.runShow())
+        } else {
+          this.showHostElement()
+        }
+      }
     } else {
       if (this.mounted) {
         this.runHide()
@@ -129,25 +135,39 @@ export class Transition extends BaseElement implements TransitionProps {
   private runShow() {
     this.removeFn = runTransition(this, {
       enter: () => {
-        this.showHostElement()
         this.onEnter()
+        this.showHostElement()
+        this.emit('showbefore')
       },
-      run: () => this.onShow(),
-      done: () => this.delClass('showClass')
-
+      run: () => {
+        this.onShow()
+        this.emit('showrun')
+      },
+      done: (_el, e) => {
+        this.delClass('showClass')
+        this.emit('showdone', e)
+        this.emit('showover', e)
+      },
     })
   }
 
   private runHide() {
     this.removeFn = runTransition(this, {
-      enter: () => this.onHide(),
-      run: () =>  this.onLeave(),
+      enter: () => {
+        this.onHide()
+        this.emit('hidebefore')
+      },
+      run: () => {
+        this.onLeave()
+        this.emit('hiderun')
+      },
       done: (_el, e) => {
         this.delClass('hideClass')
         this.delClass('leaveClass')
         this.hideHostElement()
+        this.emit('hidedone', e)
         this.emit('hideover', e)
-      }
+      },
     })
   }
 
@@ -163,7 +183,6 @@ export class Transition extends BaseElement implements TransitionProps {
     return html`<slot></slot>`
   }
 }
-
 
 function getKebabCase(value: string) {
   return value.replace(/[A-Z]/g, (item) => {

@@ -5,16 +5,12 @@ Slider.register()
 
 describe('Slider', () => {
   it('snapshot', async () => {
-    const el = await fixture<Slider>(html`
-      <ot-slider value="50"></ot-slider>
-    `)
+    const el = await fixture<Slider>(html` <ot-slider value="50"></ot-slider> `)
     expect(el).dom.to.equalSnapshot()
   })
 
   it('test value change', async () => {
-    const el = await fixture<Slider>(html`
-      <ot-slider value="50"></ot-slider>
-    `)
+    const el = await fixture<Slider>(html` <ot-slider value="50"></ot-slider> `)
     const listener = oneEvent(el, 'change')
     el.value = 60
     const { detail } = await listener
@@ -23,9 +19,7 @@ describe('Slider', () => {
 
   // todo: fix this test, mock click / mousedown event to trigger afterChange
   it.skip('test afterChange', async () => {
-    const el = await fixture<Slider>(html`
-      <ot-slider value="50"></ot-slider>
-    `)
+    const el = await fixture<Slider>(html` <ot-slider value="50"></ot-slider> `)
     const listener = oneEvent(el, 'afterChange')
     el.value = 60
     const { detail } = await listener
@@ -33,9 +27,7 @@ describe('Slider', () => {
   })
 
   it('test max and min value', async () => {
-    const el = await fixture<Slider>(html`
-      <ot-slider value="50" max="60" min="0"></ot-slider>
-    `)
+    const el = await fixture<Slider>(html` <ot-slider value="50" max="60" min="0"></ot-slider> `)
     const listener = oneEvent(el, 'change')
     el.value = 70
     const { detail } = await listener

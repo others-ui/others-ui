@@ -1,19 +1,30 @@
-import { classMap, createRef, css, html, unsafeCSS, ref, state, PropertyValueMap, Ref } from '@others-ui/common'
+import {
+  classMap,
+  createRef,
+  css,
+  html,
+  unsafeCSS,
+  ref,
+  state,
+  PropertyValueMap,
+  Ref,
+} from '@others-ui/common'
 import styles from './styles/slider.scss'
 import { SliderProperties } from './slider.props'
 import { watch } from '../../utils/watch'
 
 export enum SliderEvent {
   Change = 'change',
-  AfterChange = 'afterChange'
+  AfterChange = 'afterChange',
 }
 
 export class Slider extends SliderProperties {
-
   static componentName: string = 'slider'
 
   static override styles = [
-    css`${unsafeCSS(styles)}`
+    css`
+      ${unsafeCSS(styles)}
+    `,
   ]
 
   @state()
@@ -108,7 +119,7 @@ export class Slider extends SliderProperties {
         this.emit(SliderEvent.Change, {
           value: this.innerValue,
         })
-      }
+      },
     })
   }
 
@@ -116,19 +127,19 @@ export class Slider extends SliderProperties {
     return html`
       <div
         ${ref(this.sliderRef)}
-        class=${classMap({ slider: true, disabled: this.disabled, dragging: this.isDragging, horizontal: !this.vertical, vertical: this.vertical })}
+        class=${classMap({
+          slider: true,
+          disabled: this.disabled,
+          dragging: this.isDragging,
+          horizontal: !this.vertical,
+          vertical: this.vertical,
+        })}
         @mousedown=${this.onMouseDown}
         @dragstart=${(e: Event) => e.preventDefault()}
       >
         <div class="slider-rail"></div>
-        <div
-          ${ref(this.sliderTrackRef)}
-          class="slider-track"
-        ></div>
-        <div
-          ${ref(this.sliderHandleRef)}
-          class="slider-handle"
-        ></div>
+        <div ${ref(this.sliderTrackRef)} class="slider-track"></div>
+        <div ${ref(this.sliderHandleRef)} class="slider-handle"></div>
       </div>
     `
   }

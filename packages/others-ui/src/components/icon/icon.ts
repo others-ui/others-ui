@@ -9,14 +9,14 @@ export interface IconProps {
 
 export class Icon extends BaseElement implements IconProps {
   static componentName: string = 'icon'
-  static styles = css`${unsafeCSS(styles)}`
+  static styles = css`
+    ${unsafeCSS(styles)}
+  `
 
-  @property({type: String, reflect: true})
+  @property({ type: String, reflect: true })
   public svgHtml: string = ''
 
   render() {
-    return html`
-      ${this.svgHtml}
-    `
+    return html` ${this.svgHtml} `
   }
 }

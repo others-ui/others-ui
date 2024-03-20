@@ -10,9 +10,11 @@ export interface SpaceProps {
 export class Space extends BaseElement implements SpaceProps {
   static componentName: string = 'space'
 
-  static styles = css`${unsafeCSS(styles)}`
+  static styles = css`
+    ${unsafeCSS(styles)}
+  `
 
-  @property({type: String, reflect: true})
+  @property({ type: String, reflect: true })
   public direction: SpaceProps['direction'] = 'horizontal'
 
   render() {

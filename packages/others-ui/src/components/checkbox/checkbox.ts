@@ -3,25 +3,29 @@ import { property, state } from '@others-ui/common'
 import { BaseElement } from '@others-ui/common'
 import styles from './styles/checkbox.scss'
 import { consume } from '@others-ui/common'
-import { CheckboxGroupContext, CheckboxGroupContextType, CheckboxGroupContextValue } from './GroupContext'
+import {
+  CheckboxGroupContext,
+  CheckboxGroupContextType,
+  CheckboxGroupContextValue,
+} from './GroupContext'
 import { watch } from '../../utils/watch'
-
 
 export interface CheckboxProps<T> {
   checked?: boolean
   value?: T
 }
 
-
 export class Checkbox<T = unknown> extends BaseElement implements CheckboxProps<T> {
   static componentName = 'checkbox'
-  static styles = css`${unsafeCSS(styles)}`
+  static styles = css`
+    ${unsafeCSS(styles)}
+  `
 
-  @consume({context: CheckboxGroupContext as CheckboxGroupContextType<T>, subscribe: true})
-  @property({attribute:false})
+  @consume({ context: CheckboxGroupContext as CheckboxGroupContextType<T>, subscribe: true })
+  @property({ attribute: false })
   private checkboxGroupContext?: CheckboxGroupContextValue<T>
 
-  @property({type: Boolean})
+  @property({ type: Boolean })
   public checked?: boolean
 
   @property()
@@ -46,12 +50,16 @@ export class Checkbox<T = unknown> extends BaseElement implements CheckboxProps<
       if (input.checked) {
         this.groupValue = [...this.groupValue, this.value]
       } else {
-        this.groupValue = this.groupValue.filter(item => item !== this.value)
+        this.groupValue = this.groupValue.filter((item) => item !== this.value)
       }
     }
   }
 
-  protected willUpdate(state: PropertyValueMap<CheckboxProps<T> & { checkboxGroupContext: CheckboxGroupContextValue<T> }>) {
+  protected willUpdate(
+    state: PropertyValueMap<
+      CheckboxProps<T> & { checkboxGroupContext: CheckboxGroupContextValue<T> }
+    >,
+  ) {
     watch(state, {
       checkboxGroupContext: () => {
         if (this.value !== undefined) {
@@ -64,14 +72,14 @@ export class Checkbox<T = unknown> extends BaseElement implements CheckboxProps<
       },
       checked: () => {
         this.isChecked = this.checked
-      }
+      },
     })
   }
 
   render() {
     return html`
       <label class="container">
-        <input type="checkbox" .checked=${this.isChecked} @change=${this.onChange}/>
+        <input type="checkbox" .checked=${this.isChecked} @change=${this.onChange} />
         <div class="checkbox"></div>
         <span class="text">
           <slot></slot>

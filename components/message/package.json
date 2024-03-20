@@ -26,7 +26,7 @@
   },
   "dependencies": {
     "@others-ui/common": "workspace:*",
-    "@others-ui/transition": "workspace:0.0.10-alpha.0"
+    "@others-ui/transition": "workspace:*"
   },
   "build": {
     "global_name": "OtMessage",

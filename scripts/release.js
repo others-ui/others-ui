@@ -7,7 +7,9 @@ const __filename = fileURLToPath(import.meta.url)
 const __dirname = dirname(__filename)
 
 async function getPkgVersion() {
-  const { version } = await jsonfile.readFile(resolve(__dirname, '../packages/others-ui/package.json'))
+  const { version } = await jsonfile.readFile(
+    resolve(__dirname, '../packages/others-ui/package.json'),
+  )
   return `v${version}`
 }
 

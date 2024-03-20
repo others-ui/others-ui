@@ -6,7 +6,7 @@ type WatchHandler<T extends Record<string, any>> = {
 // 封装监听函数，在update周期使用
 export function watch<T extends Record<string, any>>(
   state: PropertyValueMap<T>,
-  handler: WatchHandler<T>
+  handler: WatchHandler<T>,
 ) {
   for (const prop in handler) {
     const fn = handler[prop]

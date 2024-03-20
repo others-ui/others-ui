@@ -1,12 +1,5 @@
-import {
-  css,
-  html,
-  unsafeCSS,
-  property,
-  BaseElement
-} from '@others-ui/common'
+import { css, html, unsafeCSS, property, BaseElement } from '@others-ui/common'
 import styles from './styles/$$componentName$$.scss'
-
 
 export interface $$globalComponentName$$Props {
   yourFirstProp?: string
@@ -14,7 +7,9 @@ export interface $$globalComponentName$$Props {
 
 export class $$globalComponentName$$ extends BaseElement implements $$globalComponentName$$Props {
   static componentName = '$$componentName$$'
-  static styles = css`${unsafeCSS(styles)}`
+  static styles = css`
+    ${unsafeCSS(styles)}
+  `
 
   @property()
   public yourFirstProp?: string
@@ -23,4 +18,3 @@ export class $$globalComponentName$$ extends BaseElement implements $$globalComp
     return html`<slot></slot>`
   }
 }
-

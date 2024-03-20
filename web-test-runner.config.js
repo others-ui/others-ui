@@ -4,7 +4,5 @@ import { esbuildPlugin } from '@web/dev-server-esbuild'
 export default {
   nodeResolve: true,
   files: './packages/*/src/**/__tests__/*.test.ts',
-  plugins: [
-    esbuildPlugin({ ts: true, tsconfig: './tsconfig.json'})
-  ]
+  plugins: [esbuildPlugin({ ts: true, tsconfig: './tsconfig.json' })],
 }

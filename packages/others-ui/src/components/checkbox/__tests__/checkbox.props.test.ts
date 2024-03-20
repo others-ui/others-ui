@@ -5,15 +5,11 @@ import { sleep } from '../../../utils/test'
 Checkbox.register()
 
 describe('test checkbox props', () => {
-
   let el: Checkbox
 
   beforeEach(async () => {
-    el = await fixture<Checkbox>(html`
-      <ot-checkbox>checkbox</ot-checkbox>
-    `)
+    el = await fixture<Checkbox>(html` <ot-checkbox>checkbox</ot-checkbox> `)
   })
-
 
   it('should reactive', async () => {
     const input = el.shadowRoot?.querySelector('input') as HTMLInputElement
@@ -28,5 +24,3 @@ describe('test checkbox props', () => {
     expect(input.checked).to.be.false
   })
 })
-
-

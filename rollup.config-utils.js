@@ -4,6 +4,7 @@ import postcss from 'rollup-plugin-postcss'
 import replace from '@rollup/plugin-replace'
 import terser from '@rollup/plugin-terser'
 import commonjs from '@rollup/plugin-commonjs'
+import { outputSize } from 'rollup-plugin-output-size'
 import path from 'node:path'
 
 const __PROD__ = process.env.BUILD === 'production'
@@ -11,7 +12,7 @@ const __PREFIX__ = 'ot'
 
 const common_replace_variables = {
   __DEV__: `${!__PROD__}`,
-  'process.env.OTHER_PREFIX': `'${__PREFIX__}'`
+  'process.env.OTHER_PREFIX': `'${__PREFIX__}'`,
 }
 
 export const resolve_path = (_path) => path.resolve(__dirname, _path)
@@ -21,34 +22,35 @@ export function resolvePlugins({
   resolve_module = false,
   replace_variables = {},
   package_path = '',
-  source = false
+  source = false,
 }) {
   const plugins = []
   const outer_css_exp = /\.outer.(scss|sass|css)$/
 
   // 打包全局css样式 脱离组件库
-  css_output && plugins.push(
-    postcss({
-      extensions: ['.css', '.scss', '.sass'],
-      inject: false,
-      extract: css_output,
-      include: outer_css_exp
-    })
-  )
+  css_output &&
+    plugins.push(
+      postcss({
+        extensions: ['.css', '.scss', '.sass'],
+        inject: false,
+        extract: css_output,
+        include: outer_css_exp,
+      }),
+    )
 
   // 只打包组件内的css为字符串
   plugins.push(
     postcss({
       use: {
         sass: {
-          data: `@import "${path.resolve(__dirname, './styles/index.scss')}";`
-        }
+          data: `@import "${path.resolve(__dirname, './styles/index.scss')}";`,
+        },
       },
       extensions: ['.css', '.scss', '.sass'],
       inject: false,
       extract: false,
       exclude: outer_css_exp,
-    })
+    }),
   )
 
   // 打包umd格式的可以开启
@@ -59,36 +61,28 @@ export function resolvePlugins({
       resolve({
         // exportConditions: ['source', 'default', 'module', 'import'],
         // resolveOnly: [/^@others-ui\/.*$/],
-        mainFields: ['source', 'module', 'main']
+        mainFields: ['source', 'module', 'main'],
       }),
     )
   } else {
-    resolve_module && plugins.push(
-      commonjs(),
-      resolve(),
-    )
+    resolve_module && plugins.push(commonjs(), resolve())
   }
 
   plugins.push(
     replace({
       preventAssignment: true,
       ...common_replace_variables,
-      ...replace_variables
+      ...replace_variables,
     }),
     typescript({
       baseUrl: package_path,
       tsconfig: `${package_path}/tsconfig.json`,
       typescript: require('typescript'),
-      paths: (
-        source
-          ? {
-            '@others-ui/*': [
-              '../*/src',
-              '../../components/*/src'
-            ],
+      paths: source
+        ? {
+            '@others-ui/*': ['../*/src', '../../components/*/src'],
           }
-          : undefined
-      )
+        : undefined,
     }),
   )
 
@@ -126,7 +120,7 @@ export function resolveRollupConfig({
     const globals = {}
     const external = []
 
-    Object.keys(depend_globals).forEach(key => {
+    Object.keys(depend_globals).forEach((key) => {
       external.push(key)
       globals[key] = depend_globals[key]
     })
@@ -135,18 +129,13 @@ export function resolveRollupConfig({
     pkgConfig.output.globals = globals
   }
 
-  if(['cjs'].includes(format)) {
+  if (['cjs'].includes(format)) {
     pkgConfig.output.exports = 'named'
   }
 
   if (['cjs', 'esm'].includes(format)) {
     pkgConfig.onwarn = (warning, warn) => {
-      if (
-        [
-          'UNRESOLVED_IMPORT',
-          'MIXED_EXPORTS'
-        ].includes(warning.code)
-      ) {
+      if (['UNRESOLVED_IMPORT', 'MIXED_EXPORTS'].includes(warning.code)) {
         return
       }
       warn(warning)
@@ -158,12 +147,15 @@ export function resolveRollupConfig({
     resolve_module: format === 'umd',
     replace_variables,
     package_path,
-    source
+    source,
   })
 
   if (__PROD__) {
     pkgConfig.plugins.push(terser())
+    pkgConfig.plugins.push(outputSize({ hide: ['asset', 'chunk'] }))
   }
+
+  pkgConfig.preserveEntrySignatures = 'strict'
 
   return pkgConfig
 }
@@ -180,7 +172,6 @@ export function resolvePkgConfig({
   mode = [],
   source = false,
 }) {
-
   const is_umd_alone = depend_globals && Object.keys(depend_globals).length
 
   const get_rollup_config = (mode, suffix) => {
@@ -195,11 +186,11 @@ export function resolvePkgConfig({
       // umd启用 全局依赖
       depend_globals,
       replace_variables,
-      source
+      source,
     }
   }
 
-  const configs = mode.map(m => resolveRollupConfig(get_rollup_config(m, m)))
+  const configs = mode.map((m) => resolveRollupConfig(get_rollup_config(m, m)))
 
   if (mode.includes('umd') && is_umd_alone) {
     configs.push(resolveRollupConfig(get_rollup_config('umd', 'umd-alone')))

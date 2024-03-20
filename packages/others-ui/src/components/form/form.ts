@@ -10,25 +10,30 @@ export interface FormProps<T extends Record<string, unknown> = Record<string, un
   values?: T
 }
 
-export class Form<T extends Record<string, unknown> = Record<string, unknown>> extends BaseElement implements FormProps {
+export class Form<T extends Record<string, unknown> = Record<string, unknown>>
+  extends BaseElement
+  implements FormProps
+{
   static componentName = 'form'
-  static styles = css`${unsafeCSS(styles)}`
+  static styles = css`
+    ${unsafeCSS(styles)}
+  `
   static expressionProperties: string[] = ['initialValues']
 
   // 初始化的状态
-  @property({type: Object, converter: (value) => value && toObject(value)})
+  @property({ type: Object, converter: (value) => value && toObject(value) })
   public initialValues?: T
 
   // 表单状态
-  @property({type: Object})
+  @property({ type: Object })
   public values?: T
 
   // 真正控制表单渲染的状态
   @state()
   private _values: T = {} as T
 
-  @provide({context: FormContext})
-  @property({attribute: false})
+  @provide({ context: FormContext })
+  @property({ attribute: false })
   private formContext?: FormContextValue<T>
 
   constructor() {
@@ -36,9 +41,7 @@ export class Form<T extends Record<string, unknown> = Record<string, unknown>> e
   }
 
   private onSubmit() {
-    this.dispatchEvent(
-      new CustomEvent('submit', { detail: {...this._values} })
-    )
+    this.dispatchEvent(new CustomEvent('submit', { detail: { ...this._values } }))
   }
 
   public submit() {
@@ -58,25 +61,24 @@ export class Form<T extends Record<string, unknown> = Record<string, unknown>> e
     this.formContext = {
       values: this._values || ({} as T),
       setValue: (name, value) => {
-        this._values = {...this._values, [name]: value}
+        this._values = { ...this._values, [name]: value }
       },
     }
   }
 
-
-  protected willUpdate(state: PropertyValueMap<FormProps<T> & { _values: T, formContext: FormContextValue<T> }>) {
+  protected willUpdate(
+    state: PropertyValueMap<FormProps<T> & { _values: T; formContext: FormContextValue<T> }>,
+  ) {
     if (state.has('values')) {
-      this._values = {...this.values} as T
+      this._values = { ...this.values } as T
     }
 
     if (state.has('_values') && this.formContext) {
-      this.formContext = {...this.formContext, values: this._values}
+      this.formContext = { ...this.formContext, values: this._values }
     }
   }
 
   render() {
-    return html`
-     <slot></slot>
-    `
+    return html` <slot></slot> `
   }
 }

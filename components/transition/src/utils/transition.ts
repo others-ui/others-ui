@@ -1,10 +1,6 @@
 import { nextFrame } from './nextFrame'
 
-
-type TransitionOverType =
-  | 'end'
-  | 'cancel'
-  | 'noTransition'
+type TransitionOverType = 'end' | 'cancel' | 'noTransition'
 export interface TransitionHandler {
   enter?(el: HTMLElement): void
   done?(el: HTMLElement, e: TransitionOverType): void
@@ -18,13 +14,16 @@ function getStandardTime(time: string): number {
 /**
  * 这里的解析时间可能有点bug
  * 后面如果有问题需要改改
-*/
+ */
 export function getTransitionDuration(el: HTMLElement): number {
   const durationOrigin = getComputedStyle(el).transitionDuration
-  const durationList = durationOrigin.trim().split(',').map(item => item.trim())
+  const durationList = durationOrigin
+    .trim()
+    .split(',')
+    .map((item) => item.trim())
   let maxDuration = getStandardTime(durationList[0])
 
-  for(const item of durationList) {
+  for (const item of durationList) {
     const time = getStandardTime(item)
     if (time > maxDuration) {
       maxDuration = time
@@ -35,10 +34,13 @@ export function getTransitionDuration(el: HTMLElement): number {
 
 export function getTransitionDelay(el: HTMLElement): number {
   const delayOrigin = getComputedStyle(el).transitionDelay
-  const delayList = delayOrigin.trim().split(',').map(item => item.trim())
+  const delayList = delayOrigin
+    .trim()
+    .split(',')
+    .map((item) => item.trim())
   let maxDelay = getStandardTime(delayList[0])
 
-  for(const item of delayList) {
+  for (const item of delayList) {
     const time = getStandardTime(item)
     if (time > maxDelay) {
       maxDelay = time
@@ -61,21 +63,30 @@ export function runTransition(el: HTMLElement, handler: TransitionHandler) {
     property = []
   }
 
-  el.addEventListener('transitionrun', f2 = (e: TransitionEvent) => {
-    property.push(e.propertyName)
-  })
+  el.addEventListener(
+    'transitionrun',
+    (f2 = (e: TransitionEvent) => {
+      property.push(e.propertyName)
+    }),
+  )
 
-  el.addEventListener('transitionend', f3 = (e: TransitionEvent) => {
-    property = property.filter(i => i !== e.propertyName)
-    if (property.length === 0) {
-      handler.done?.(el, 'end')
-      remove()
-    }
-  })
+  el.addEventListener(
+    'transitionend',
+    (f3 = (e: TransitionEvent) => {
+      property = property.filter((i) => i !== e.propertyName)
+      if (property.length === 0) {
+        handler.done?.(el, 'end')
+        remove()
+      }
+    }),
+  )
 
-  el.addEventListener('transitioncancel', f4 = (e: TransitionEvent) => {
-    property = property.filter(i => i !== e.propertyName)
-  })
+  el.addEventListener(
+    'transitioncancel',
+    (f4 = (e: TransitionEvent) => {
+      property = property.filter((i) => i !== e.propertyName)
+    }),
+  )
 
   nextFrame(() => {
     handler.run?.(el)

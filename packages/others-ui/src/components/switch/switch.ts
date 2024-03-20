@@ -12,16 +12,21 @@ export interface SwitchProps {
   value?: boolean
 }
 
-export class Switch extends FormItemMixin<typeof BaseElement, boolean>(BaseElement) implements SwitchProps {
+export class Switch
+  extends FormItemMixin<typeof BaseElement, boolean>(BaseElement)
+  implements SwitchProps
+{
   static componentName: string = 'switch'
-  static styles = css`${unsafeCSS(styles)}`
+  static styles = css`
+    ${unsafeCSS(styles)}
+  `
 
   private inputRef = createRef<HTMLInputElement>()
 
-  @property({type: String})
+  @property({ type: String })
   public name?: string
 
-  @property({type: Boolean})
+  @property({ type: Boolean })
   public value?: boolean
 
   @state()
@@ -33,7 +38,11 @@ export class Switch extends FormItemMixin<typeof BaseElement, boolean>(BaseEleme
     this.formItemValue = input.checked
   }
 
-  protected willUpdate( state: PropertyValueMap<SwitchProps & { _value: string, formItemContext: FormItemContextValue<boolean> }>) {
+  protected willUpdate(
+    state: PropertyValueMap<
+      SwitchProps & { _value: string; formItemContext: FormItemContextValue<boolean> }
+    >,
+  ) {
     watch(state, {
       value: () => {
         this._value = this.value
@@ -41,7 +50,7 @@ export class Switch extends FormItemMixin<typeof BaseElement, boolean>(BaseEleme
 
       formItemContext: () => {
         this._value = this.formItemValue
-      }
+      },
     })
   }
 
